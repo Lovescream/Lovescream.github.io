@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>김세진 — Unity Client Developer Portfolio</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <style>
+    :root {
+      --bg: #0d1020;
+      --bg2: #12162a;
+      --panel: rgba(255,255,255,.07);
+      --panel2: rgba(255,255,255,.11);
+      --card: #171b31;
+      --card2: #f7f7fb;
+      --ink: #f4f7ff;
+      --text: #cbd3ea;
+      --muted: #8490b6;
+      --line: rgba(255,255,255,.12);
+      --accent: #8be9d6;
+      --accent2: #a98bff;
+      --accent3: #ffd166;
+      --danger: #ff7b8a;
+      --white: #ffffff;
+      --code: #0b1020;
+      --shadow: 0 24px 80px rgba(0,0,0,.35);
+      --radius: 24px;
+      --mono: "JetBrains Mono", "D2Coding", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(169,139,255,.28), transparent 34%),
+        radial-gradient(circle at 86% 18%, rgba(139,233,214,.18), transparent 32%),
+        linear-gradient(180deg, #0d1020 0%, #101426 52%, #0b0d18 100%);
+      line-height: 1.6;
+      word-break: keep-all;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1140px, calc(100% - 40px)); margin: 0 auto; }
+    .nav {
+      position: sticky; top: 0; z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(13,16,32,.78);
+      backdrop-filter: blur(18px);
+    }
+    .nav-inner { height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display:flex; align-items:center; gap: 12px; color: var(--ink); font-weight: 800; letter-spacing: -.02em; }
+    .brand-mark {
+      width: 36px; height: 36px; display:grid; place-items:center;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #0d1020; font-weight: 900;
+      box-shadow: 0 10px 40px rgba(139,233,214,.22);
+    }
+    .nav-links { display:flex; gap: 18px; flex-wrap: wrap; font-size: 14px; color: var(--muted); }
+    .nav-links a:hover { color: var(--accent); }
+
+    .hero { min-height: calc(100vh - 70px); display:flex; align-items:center; padding: 86px 0 60px; position: relative; overflow: hidden; }
+    .hero-grid { display:grid; grid-template-columns: 1.1fr .9fr; gap: 44px; align-items:center; }
+    .eyebrow { font-family: var(--mono); color: var(--accent); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
+    h1, h2, h3, p { margin: 0; }
+    h1 { color: var(--ink); font-size: clamp(52px, 8vw, 92px); line-height: .95; letter-spacing: -.065em; margin: 14px 0 22px; }
+    .hero-title-sub { font-size: clamp(20px, 3vw, 31px); color: var(--ink); font-weight: 700; line-height: 1.35; letter-spacing: -.03em; max-width: 720px; }
+    .hero-desc { margin-top: 22px; max-width: 680px; font-size: 17px; color: var(--text); }
+    .hero-actions { margin-top: 32px; display:flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center; gap: 9px;
+      padding: 12px 18px; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--panel);
+      color: var(--ink); font-weight: 700; cursor: pointer;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); border-color: rgba(139,233,214,.65); background: rgba(139,233,214,.12); }
+    .btn.primary { color:#071119; background: linear-gradient(135deg, var(--accent), #c8fff4); border:0; }
+    .contact-line { display:flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; color: var(--muted); font-family: var(--mono); font-size: 13px; }
+    .contact-line a { color: var(--accent); }
+
+    .hero-panel {
+      position: relative; border: 1px solid var(--line); border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.055));
+      box-shadow: var(--shadow); padding: 24px; overflow: hidden;
+    }
+    .hero-panel::before {
+      content:""; position:absolute; inset:0;
+      background: linear-gradient(120deg, rgba(139,233,214,.12), transparent 42%, rgba(169,139,255,.12));
+      pointer-events:none;
+    }
+    .metric-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 14px; position: relative; }
+    .metric { padding: 18px; border-radius: 20px; background: rgba(13,16,32,.55); border: 1px solid var(--line); min-height: 126px; display:flex; flex-direction:column; justify-content:space-between; }
+    .metric .num { font-family: var(--mono); font-size: 36px; color: var(--accent); font-weight: 900; line-height:1; }
+    .metric .label { color: var(--muted); font-size: 13px; margin-top: 10px; }
+    .signature { margin-top: 16px; position: relative; display:flex; flex-direction:column; gap: 10px; }
+    .sig { display:flex; justify-content:space-between; align-items:center; padding: 13px 14px; border-radius: 16px; background: rgba(255,255,255,.07); border:1px solid var(--line); }
+    .sig b { color: var(--ink); }
+    .sig span { color: var(--accent3); font-family: var(--mono); font-size: 12px; }
+
+    section { padding: 86px 0; }
+    .section-head { display:flex; align-items:end; justify-content:space-between; gap: 30px; margin-bottom: 28px; }
+    .section-title { color: var(--ink); font-size: clamp(30px, 4vw, 48px); line-height:1.08; letter-spacing:-.045em; }
+    .section-lead { color: var(--muted); max-width: 680px; font-size: 16px; }
+
+    .grid2 { display:grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .grid3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .grid4 { display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .card {
+      border: 1px solid var(--line); border-radius: 22px; padding: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,.095), rgba(255,255,255,.045));
+      box-shadow: 0 12px 50px rgba(0,0,0,.12);
+    }
+    .card h3 { color: var(--ink); font-size: 20px; line-height:1.35; margin-bottom: 10px; letter-spacing:-.02em; }
+    .card p { color: var(--text); font-size: 15px; }
+    .card.accent { border-color: rgba(139,233,214,.35); background: linear-gradient(180deg, rgba(139,233,214,.13), rgba(255,255,255,.045)); }
+    .card.purple { border-color: rgba(169,139,255,.35); background: linear-gradient(180deg, rgba(169,139,255,.14), rgba(255,255,255,.045)); }
+
+    .chip-row { display:flex; flex-wrap:wrap; gap: 8px; margin-top: 16px; }
+    .chip { font-family: var(--mono); font-size: 12px; color: var(--accent); background: rgba(139,233,214,.1); border:1px solid rgba(139,233,214,.25); border-radius: 999px; padding: 5px 10px; }
+    .chip.p { color: #cfc2ff; border-color: rgba(169,139,255,.3); background: rgba(169,139,255,.12); }
+    .chip.y { color: var(--accent3); border-color: rgba(255,209,102,.3); background: rgba(255,209,102,.1); }
+
+    .strength {
+      border-radius: 32px; padding: 32px;
+      background: linear-gradient(135deg, rgba(139,233,214,.15), rgba(169,139,255,.13));
+      border: 1px solid var(--line);
+      display:grid; grid-template-columns: .85fr 1.15fr; gap: 26px; align-items:center;
+    }
+    .strength h2 { color: var(--ink); font-size: clamp(28px, 4vw, 46px); line-height:1.1; letter-spacing:-.04em; }
+    .strength-list { display:grid; gap: 14px; }
+    .strength-item { padding: 18px 20px; border-radius: 18px; background: rgba(13,16,32,.48); border:1px solid var(--line); color: var(--text); }
+    .strength-item b { color: var(--ink); display:block; margin-bottom: 4px; }
+
+    .system-layout { display:grid; grid-template-columns: .75fr 1.25fr; gap: 22px; align-items:start; }
+    .system-index { position: sticky; top: 94px; display:grid; gap: 10px; }
+    .system-index a { padding: 12px 14px; border:1px solid var(--line); border-radius: 15px; color: var(--text); background: rgba(255,255,255,.045); font-weight: 700; font-size:14px; }
+    .system-index a:hover { color: var(--accent); border-color: rgba(139,233,214,.45); }
+    .system-list { display:grid; gap: 18px; }
+    .system-card { border:1px solid var(--line); border-radius: 24px; padding: 26px; background: rgba(255,255,255,.065); }
+    .system-card h3 { color: var(--ink); font-size: 24px; margin-bottom: 10px; letter-spacing:-.03em; }
+    .system-card p { color: var(--text); margin-bottom: 14px; }
+    .flow { display:flex; flex-wrap:wrap; gap: 8px; margin: 16px 0; align-items:center; }
+    .flow span { padding: 9px 12px; border-radius: 12px; border:1px solid rgba(139,233,214,.25); background: rgba(139,233,214,.09); color: var(--ink); font-weight: 700; font-size: 13px; }
+    .flow i { color: var(--accent); font-style:normal; font-weight:900; }
+    .code-open { margin-top: 8px; }
+    .code-open::before { content:"</>"; font-family:var(--mono); }
+
+    .framework { display:grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .module-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
+    .module { padding: 13px 14px; border-radius: 16px; border:1px solid var(--line); background: rgba(13,16,32,.42); }
+    .module b { color: var(--ink); display:block; font-size:14px; }
+    .module span { color: var(--muted); font-size:12px; }
+
+    .featured-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .project-feature { position:relative; min-height: 280px; overflow:hidden; border-radius: 28px; border:1px solid var(--line); padding: 26px; background: linear-gradient(135deg, rgba(255,255,255,.1), rgba(255,255,255,.045)); }
+    .project-feature::after { content:""; position:absolute; width:180px; height:180px; border-radius:50%; right:-52px; top:-52px; background: radial-gradient(circle, rgba(139,233,214,.25), transparent 70%); }
+    .app-head { display:flex; align-items:center; gap: 14px; margin-bottom: 18px; position:relative; z-index:1; }
+    .app-icon { width: 64px; height: 64px; flex:0 0 auto; border-radius: 20px; display:grid; place-items:center; color:#08111a; font-weight: 900; font-size: 22px; background: linear-gradient(135deg, var(--accent), #dffdf7); box-shadow: 0 15px 40px rgba(139,233,214,.15); }
+    .app-icon.purple { background: linear-gradient(135deg, var(--accent2), #e0d8ff); }
+    .app-icon.yellow { background: linear-gradient(135deg, var(--accent3), #fff0bd); }
+    .app-icon.pink { background: linear-gradient(135deg, #ff8cc6, #ffd2e8); }
+    .app-title { color: var(--ink); font-size: 24px; font-weight: 900; letter-spacing:-.03em; }
+    .app-role { color: var(--accent); font-family:var(--mono); font-size: 12px; margin-top: 2px; }
+    .project-feature p { position:relative; z-index:1; color:var(--text); }
+    .store-links { position:relative; z-index:1; display:flex; gap: 8px; flex-wrap:wrap; margin-top: 18px; }
+    .store-links a { font-family:var(--mono); font-size:12px; padding: 8px 11px; border-radius: 999px; border:1px solid var(--line); color: var(--ink); background: rgba(13,16,32,.35); }
+    .store-links a:hover { border-color: rgba(139,233,214,.5); color: var(--accent); }
+
+    .project-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .mini-project { padding: 18px; border-radius: 20px; border:1px solid var(--line); background: rgba(255,255,255,.055); min-height: 188px; display:flex; flex-direction:column; }
+    .mini-project h3 { color:var(--ink); font-size:18px; margin-bottom: 8px; }
+    .mini-project p { color: var(--muted); font-size: 14px; flex:1; }
+    .mini-links { display:flex; gap: 8px; margin-top: 14px; }
+    .mini-links a { font-size: 12px; color: var(--accent); font-family:var(--mono); }
+
+    .work-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .work-card { padding: 20px; border-radius: 20px; border: 1px solid var(--line); background: rgba(255,255,255,.055); }
+    .work-card h3 { color: var(--ink); font-size: 17px; margin-bottom: 8px; }
+    .work-card ul { margin: 0; padding-left: 18px; color: var(--text); font-size:14px; }
+    .work-card li { margin: 5px 0; }
+
+    .contact-section { text-align:center; padding: 100px 0; }
+    .contact-section h2 { color:var(--ink); font-size: clamp(34px, 5vw, 58px); line-height:1.12; letter-spacing:-.05em; max-width: 900px; margin: 0 auto 28px; }
+    .contact-cards { display:flex; justify-content:center; gap: 10px; flex-wrap:wrap; }
+    .contact-cards a, .contact-cards span { padding: 12px 16px; border-radius: 999px; border:1px solid var(--line); background: rgba(255,255,255,.06); color: var(--ink); font-family:var(--mono); font-size: 13px; }
+
+    .modal { position: fixed; inset: 0; z-index: 50; display:none; align-items:center; justify-content:center; padding: 32px; background: rgba(2,4,12,.72); backdrop-filter: blur(12px); }
+    .modal.open { display:flex; }
+    .modal-box { width:min(1120px, 94vw); max-height: 88vh; overflow:hidden; border-radius: 24px; border:1px solid rgba(255,255,255,.12); background: #0b1020; box-shadow: var(--shadow); display:flex; flex-direction:column; }
+    .modal-top { display:flex; justify-content:space-between; align-items:center; gap: 20px; padding: 16px 20px; border-bottom:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.035); }
+    .modal-title { color: var(--accent); font-family:var(--mono); font-size: 13px; font-weight:800; letter-spacing:.05em; text-transform: uppercase; }
+    .modal-close { border:0; background: transparent; color: var(--muted); font-size: 24px; cursor:pointer; }
+    .modal-close:hover { color: var(--ink); }
+    .modal-body { overflow:auto; padding: 22px; }
+    .code-caption { color: var(--muted); margin-bottom: 14px; font-size: 14px; }
+    pre { margin:0; overflow:auto; border-radius: 18px; border:1px solid rgba(255,255,255,.12); background:#0d1117; }
+    code.hljs { font-family: var(--mono); font-size: 13.5px; line-height: 1.62; padding: 18px 20px; }
+    .code-template { display:none; }
+
+    footer { padding: 28px 0; border-top:1px solid var(--line); color: var(--muted); text-align:center; font-size:13px; }
+
+    @media (max-width: 980px) {
+      .hero-grid, .strength, .system-layout, .framework { grid-template-columns: 1fr; }
+      .grid3, .grid4, .project-grid, .work-grid { grid-template-columns: repeat(2, 1fr); }
+      .featured-grid { grid-template-columns: 1fr; }
+      .system-index { position:relative; top:auto; grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 620px) {
+      .wrap { width: min(100% - 24px, 1140px); }
+      .nav-links { display:none; }
+      .hero { padding-top: 54px; }
+      .metric-grid, .grid2, .grid3, .grid4, .project-grid, .work-grid, .module-grid { grid-template-columns: 1fr; }
+      .section-head { display:block; }
+      .section-lead { margin-top: 12px; }
+      .system-index { grid-template-columns: 1fr; }
+      .modal { padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a href="#top" class="brand"><span class="brand-mark">S</span><span>김세진 Portfolio</span></a>
+      <div class="nav-links">
+        <a href="#philosophy">철학</a>
+        <a href="#systems">게임 시스템</a>
+        <a href="#framework">패키지</a>
+        <a href="#featured">대표 프로젝트</a>
+        <a href="#released">출시작</a>
+        <a href="#contact">연락처</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Unity Client Developer</div>
+          <h1>김세진</h1>
+          <p class="hero-title-sub">빠른 구현, 쉽고 명확한 코드를 지향하는 Unity 클라이언트 개발자</p>
+          <p class="hero-desc">코어 플레이와 MVP를 빠르게 구현하고, 다른 개발자가 이어받기 쉬운 구조로 정리하는 개발을 지향합니다. 반복되는 퍼즐 게임 구조는 데이터 기반 생성, 명확한 바인딩, 기믹 확장 구조로 시스템화했습니다.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#featured">대표 프로젝트 보기</a>
+            <a class="btn" href="https://github.com/Lovescream" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn" href="mailto:kyt2pik@gmail.com">Email</a>
+          </div>
+          <div class="contact-line">
+            <span>G: <a href="https://github.com/Lovescream" target="_blank" rel="noreferrer">github.com/Lovescream</a></span>
+            <span>M: <a href="mailto:kyt2pik@gmail.com">kyt2pik@gmail.com</a></span>
+            <span>P: 010-5121-6747</span>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="핵심 수치">
+          <div class="metric-grid">
+            <div class="metric"><div class="num">20+</div><div class="label">코어 / MVP 개발</div></div>
+            <div class="metric"><div class="num">3~4</div><div class="label">월간 MVP 제작 경험</div></div>
+            <div class="metric"><div class="num">10+</div><div class="label">출시 및 참여 프로젝트</div></div>
+            <div class="metric"><div class="num">50%+</div><div class="label">전 회사 출시작 관여 비중</div></div>
+          </div>
+          <div class="signature">
+            <div class="sig"><b>Fast MVP</b><span>core first</span></div>
+            <div class="sig"><b>Readable Code</b><span>easy handoff</span></div>
+            <div class="sig"><b>Reusable Puzzle Architecture</b><span>expandable</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="philosophy">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Development Philosophy</div>
+            <h2 class="section-title">개발 철학</h2>
+          </div>
+          <p class="section-lead">빠르게 만들되, 이후 변경과 인수인계를 버틸 수 있는 구조를 함께 설계합니다.</p>
+        </div>
+        <div class="grid4">
+          <article class="card accent">
+            <h3>핵심 코어 로직을 빠르게 구현</h3>
+            <p>상세 기획과 리소스가 부족해도 레퍼런스 게임을 분석해 핵심 플레이를 우선 구현하고, 빠르게 검증 가능한 MVP를 만듭니다.</p>
+          </article>
+          <article class="card">
+            <h3>확장성 고려</h3>
+            <p>현재 기획이 단순해도 변경 가능성을 염두에 둡니다. 고정 맵처럼 보여도 가변 보드와 데이터 기반 구조를 고려합니다.</p>
+          </article>
+          <article class="card purple">
+            <h3>쉬운 코드</h3>
+            <p>주석 없이도 의도가 읽히는 구조를 지향합니다. 복잡한 로직은 상세 주석으로 보완하고, 추가/수정/제거가 쉬운 형태로 만듭니다.</p>
+          </article>
+          <article class="card">
+            <h3>제어 가능한 코드</h3>
+            <p>흐름을 예측하기 어려운 코드를 최소화하고, 어디서 시작해 어떤 상태로 이어지는지 개발자가 파악할 수 있는 구조를 선호합니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="strength">
+      <div class="wrap strength">
+        <div>
+          <div class="eyebrow">Core Strength</div>
+          <h2>빠른 MVP 제작,<br />쉽고 명확한 코드,<br />확장 가능한 구조</h2>
+        </div>
+        <div class="strength-list">
+          <div class="strength-item"><b>빠른 핵심 재미 재현</b>코어 플레이 및 MVP를 빠르게 구현하며, 상세 기획서나 리소스가 부족한 상황에서도 레퍼런스 게임 분석만으로 핵심 재미를 빠르게 재현하고 검증 가능하도록 만듭니다.</div>
+          <div class="strength-item"><b>변경을 고려한 구조 설계</b>단순히 빠르게 구현하는 것에 그치지 않고, 기획 변경과 기능 확장을 고려해 구조를 설계합니다. 읽기 쉬운 코드, 책임이 명확한 구조를 지향합니다.</div>
+          <div class="strength-item"><b>팀 전체 속도 향상</b>이어받기 쉽도록 구현하여 개인 구현 속도 뿐 아니라 팀 전체의 개발 속도 향상에 기여합니다.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="systems">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Reusable Puzzle Architecture</div>
+            <h2 class="section-title">공통 게임 시스템 구조</h2>
+          </div>
+          <p class="section-lead">여러 퍼즐 프로젝트에서 반복적으로 사용한 구조입니다. 핵심은 데이터 기반 생성, 명확한 책임 분리, 그리고 기믹 확장성입니다.</p>
+        </div>
+        <div class="system-layout">
+          <div class="system-index">
+            <a href="#sys-dmv">Data / Model / View</a>
+            <a href="#sys-board">Board 연쇄 생성</a>
+            <a href="#sys-event">이벤트 기반 구조</a>
+            <a href="#sys-bind">바인딩 처리</a>
+            <a href="#sys-gimmick">기믹 시스템</a>
+          </div>
+          <div class="system-list">
+            <article id="sys-dmv" class="system-card">
+              <h3>Data, Model, View 분리 구조</h3>
+              <p>특정 스테이지에서 생성해야 하는 값은 Data가 담고, 런타임의 실제 상태와 규칙은 Model이 담당하며, Unity 오브젝트와 애니메이션은 View/Object가 담당하도록 분리했습니다.</p>
+              <div class="flow"><span>CellData</span><i>→</i><span>Cell</span><i>→</i><span>CellObject</span><i>/</i><span>CatData</span><i>→</i><span>Cat</span><i>→</i><span>CatObject</span></div>
+              <p>이 분리 덕분에 저장/로드, 스테이지 에디터, 런타임 로직, 연출 수정이 서로 강하게 얽히지 않습니다.</p>
+              <button class="btn code-open" data-code="code-dmv">코드 보기 — CellData / Cell / CellObject</button>
+            </article>
+
+            <article id="sys-board" class="system-card">
+              <h3>Board에서 하위 모델로 연쇄 생성하고 관리하는 구조</h3>
+              <p>스테이지 전체의 루트는 Board입니다. Board가 Cell을 생성하고, Cell은 자신 위에 놓인 모델을 생성합니다. 이후 상위 Object부터 하위 Object까지 순차적으로 생성합니다.</p>
+              <div class="flow"><span>StageData</span><i>→</i><span>Board</span><i>→</i><span>Cell</span><i>→</i><span>Block / Yarn / Cat / Duck</span><i>→</i><span>Object</span></div>
+              <p>씬에 오브젝트가 흩어지지 않고, Board 하나를 기준으로 스테이지 전체를 추적할 수 있습니다.</p>
+              <button class="btn code-open" data-code="code-board">코드 보기 — Board 생성 흐름</button>
+            </article>
+
+            <article id="sys-event" class="system-card">
+              <h3>이벤트 기반 후처리 구조</h3>
+              <p>어떤 요소가 제거되거나 상태가 변하면 전체를 무작정 갱신하는 대신, 변화 지점에서 필요한 후처리만 호출합니다. 예를 들어 블록 제거 후 주변 기믹 검사, 경로 재탐색, 스폰 갱신이 이어집니다.</p>
+              <p>이 구조는 불필요한 전체 재계산을 줄이고, 변화의 원인과 결과를 코드상에서 추적하기 쉽게 만듭니다.</p>
+              <button class="btn code-open" data-code="code-event">코드 보기 — OnRemoved / RemoveGimmick</button>
+            </article>
+
+            <article id="sys-bind" class="system-card">
+              <h3>셀 점유 상태와 양방향 바인딩 처리</h3>
+              <p>Cell은 자신 위의 개체를 참조하고, 개체도 자신이 속한 Cell을 참조합니다. setter에서 이전 바인딩을 자동 해제하고 새 바인딩을 연결해, 하나의 개체가 두 위치에 동시에 존재하지 못하도록 보장합니다.</p>
+              <div class="flow"><span>Cell</span><i>↔</i><span>Yarn / Cat / Duck / Block</span><i>·</i><span>Rail ↔ Duck</span></div>
+              <p>오브젝트 이동 연출과 별개로 논리적 소유 관계를 안정적으로 유지할 수 있습니다.</p>
+              <button class="btn code-open" data-code="code-binding">코드 보기 — Cell / Rail Binding</button>
+            </article>
+
+            <article id="sys-gimmick" class="system-card">
+              <h3>기믹 시스템</h3>
+              <p>Cat, Yarn, Duck, Box, Knit 같은 핵심 개체가 가진 특수 규칙을 bool 필드로 직접 관리하지 않고, 공통 인터페이스와 베이스 클래스로 분리했습니다.</p>
+              <div class="flow"><span>Owner</span><i>→</i><span>List&lt;IGimmick&gt;</span><i>→</i><span>GimmickData</span><i>→</i><span>GimmickObject</span></div>
+              <p>기믹은 본체와 분리되어 독립적으로 동작하고 제거되며, 새로운 기믹을 추가할 때 본체 클래스의 수정량을 줄일 수 있습니다. Hidden, Frozen, Switch, Connector 같은 규칙을 기능 단위로 확장할 수 있습니다.</p>
+              <div class="chip-row"><span class="chip">확장성</span><span class="chip p">책임 분리</span><span class="chip y">View 독립</span><span class="chip">GetData 저장 지원</span></div>
+              <button class="btn code-open" data-code="code-gimmick">코드 보기 — Gimmick Interface / Base</button>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="framework">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">BlossomPackage / NyoPack</div>
+            <h2 class="section-title">자체 프레임워크 패키지</h2>
+          </div>
+          <p class="section-lead">반복되는 Unity 클라이언트 구조를 패키지화해, YarnLoop와 LoopDuck 이후 프로젝트에서 공통 기반으로 사용할 수 있도록 정리했습니다.</p>
+        </div>
+        <div class="framework">
+          <article class="card accent">
+            <h3>왜 만들었나</h3>
+            <p>프로젝트마다 반복되던 Entity, Pool, Resource, Scene, Save, Ads/IAP, Analytics 구조를 매번 다시 작성하지 않기 위해 공통 패키지로 분리했습니다.</p>
+            <div class="chip-row"><span class="chip">Entity</span><span class="chip">Pooling</span><span class="chip">Resource Cache</span><span class="chip">Scene</span><span class="chip">Akiv Save</span><span class="chip">Ads / IAP</span><span class="chip">Analytics</span></div>
+            <div class="hero-actions" style="margin-top:22px">
+              <a class="btn primary" href="https://github.com/Lovescream/NyoPack" target="_blank" rel="noreferrer">NyoPack GitHub</a>
+              <button class="btn code-open" data-code="code-blossom-entity">코드 보기 — Entity / Pool / Resource</button>
+            </div>
+          </article>
+          <article class="card purple">
+            <h3>제공하는 기반</h3>
+            <p>게임별 규칙은 각 프로젝트에 두고, 반복되는 생성/반환/로드/씬 이동/저장/분석 전송 같은 인프라를 패키지 쪽으로 모았습니다.</p>
+            <div class="module-grid">
+              <div class="module"><b>Entities</b><span>Spawn / Despawn</span></div>
+              <div class="module"><b>Pools</b><span>Prefab reuse</span></div>
+              <div class="module"><b>Res</b><span>Resource cache</span></div>
+              <div class="module"><b>Scenes</b><span>Scene transition</span></div>
+              <div class="module"><b>Akiv</b><span>Local data</span></div>
+              <div class="module"><b>Analytics</b><span>Multi service</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="featured">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Featured Projects</div>
+            <h2 class="section-title">대표 프로젝트</h2>
+          </div>
+          <p class="section-lead">핵심 개발, 기획, MVP, 라이브 또는 회사 전략에 영향을 준 프로젝트 중심으로 구성했습니다.</p>
+        </div>
+        <div class="featured-grid">
+          <article class="project-feature">
+            <div class="app-head"><div class="app-icon">빠</div><div><div class="app-title">빠지냥</div><div class="app-role">핵심 개발 · 핵심 플레이 및 기믹 기획 · 라이브</div></div></div>
+            <p>회사 최대 매출 및 대표작. 수많은 후속작이 이 게임의 컨셉과 코드를 기반으로 만들어졌습니다.</p>
+            <div class="store-links"><a href="https://play.google.com/store/apps/details?id=com.cat.hole.puzzle.aos" target="_blank" rel="noreferrer">Play Store</a><a href="https://apps.apple.com/kr/app/%EB%B9%A0%EC%A7%80%EB%83%A5-drop-the-cat/id6749132002" target="_blank" rel="noreferrer">App Store</a></div>
+          </article>
+          <article class="project-feature">
+            <div class="app-head"><div class="app-icon purple">모</div><div><div class="app-title">모먹냥 · Sand Cat Blast</div><div class="app-role">핵심 개발 및 기획</div></div></div>
+            <p>StageData, Board, Cell, Cat, Block, Gimmick 구조가 강하게 드러나는 퍼즐 프로젝트입니다. 이후 공통 구조로 발전시키기 좋은 기반이 되었습니다.</p>
+            <div class="store-links"><a href="https://play.google.com/store/apps/details?id=com.sand.cat.loop.blast.aos" target="_blank" rel="noreferrer">Play Store</a><a href="https://apps.apple.com/kr/app/%EB%AA%A8%EB%A8%B9%EB%83%A5-sand-cat/id6757536148" target="_blank" rel="noreferrer">App Store</a></div>
+          </article>
+          <article class="project-feature">
+            <div class="app-head"><div class="app-icon yellow">B</div><div><div class="app-title">Block Candy Jam</div><div class="app-role">핵심 개발</div></div></div>
+            <p>블럭 형태의 후속작들이 이 게임의 컨셉과 코드를 기반으로 만들어졌습니다. 빠른 코어 구현과 확장 가능한 후속작 기반 코드가 장점입니다.</p>
+            <div class="store-links"><a href="https://play.google.com/store/apps/details?id=com.color.jelly.jam.puzzle&hl=ko" target="_blank" rel="noreferrer">Play Store</a><a href="https://apps.apple.com/kr/app/%EB%B8%94%EB%A1%9D-%EC%BA%94%EB%94%94-%EC%9E%BC/id6744118635" target="_blank" rel="noreferrer">App Store</a></div>
+          </article>
+          <article class="project-feature">
+            <div class="app-head"><div class="app-icon pink">우</div><div><div class="app-title">우드드득</div><div class="app-role">핵심 개발 및 기획</div></div></div>
+            <p>이 게임의 성공을 통해 스테이지가 없는 미니게임류 게임 개발 전략이 세워졌습니다. 빠른 검증형 MVP의 사례로 보여주기 좋습니다.</p>
+            <div class="store-links"><a href="https://play.google.com/store/apps/details?id=com.stormborn.wood.block" target="_blank" rel="noreferrer">Play Store</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="released">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Released / Participated Projects</div>
+            <h2 class="section-title">출시 및 참여 프로젝트</h2>
+          </div>
+          <p class="section-lead">대표 프로젝트 외에도 다수의 코어 및 MVP 개발에 참여했습니다.</p>
+        </div>
+        <div class="project-grid">
+          <article class="mini-project"><h3>냥탈출</h3><p>코어 및 MVP 개발. 게임 핵심 플레이 및 기믹 기획.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.cat.away.jam.aos" target="_blank" rel="noreferrer">Play</a><a href="https://apps.apple.com/kr/app/cat-escape-%EA%B3%A0%EC%96%91%EC%9D%B4-%EB%B0%A9%ED%83%88%EC%B6%9C/id6753330488" target="_blank" rel="noreferrer">App</a></div></article>
+          <article class="mini-project"><h3>고양이 액체설</h3><p>코어 및 MVP 개발.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.cat.away.escape.aos" target="_blank" rel="noreferrer">Play</a><a href="https://apps.apple.com/kr/app/cat-away-%EA%B3%A0%EC%96%91%EC%9D%B4-%EC%95%A1%EC%B2%B4%EC%84%A4-%EB%A1%9C%EC%A7%81-%ED%8D%BC%EC%A6%90-%EA%B2%8C%EC%9E%84/id6755174303" target="_blank" rel="noreferrer">App</a></div></article>
+          <article class="mini-project"><h3>냥캡슐 아웃</h3><p>코어 및 MVP 개발.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.capsule.cat.aos" target="_blank" rel="noreferrer">Play</a><a href="https://apps.apple.com/us/app/catsule-out/id6759559942" target="_blank" rel="noreferrer">App</a></div></article>
+          <article class="mini-project"><h3>Knit Factory</h3><p>코어 및 MVP 개발. BeltBoard, BoxQueue, Knit 흐름 구조.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.actionfit.cat.factory" target="_blank" rel="noreferrer">Play</a><a href="https://apps.apple.com/kr/app/knit-factory-cute-puzzle-flow/id6756097866" target="_blank" rel="noreferrer">App</a></div></article>
+          <article class="mini-project"><h3>덕잼3D · 오리 꽥꽥 3D</h3><p>코어 및 MVP 개발.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.duck.jam" target="_blank" rel="noreferrer">Play</a><a href="https://apps.apple.com/kr/app/%EB%8D%95%EC%9E%BC3d/id6749844595" target="_blank" rel="noreferrer">App</a></div></article>
+          <article class="mini-project"><h3>Yarn Loop</h3><p>핵심 개발 및 기획. BlossomPackage 기반 프로젝트.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.yarn.loop.aos" target="_blank" rel="noreferrer">Play</a><a href="https://apps.apple.com/us/app/yarn-loop-wool-puzzle/id6761704577" target="_blank" rel="noreferrer">App</a></div></article>
+          <article class="mini-project"><h3>Duck Loop</h3><p>코어 및 MVP 개발. Rail / Slot / Duck 구조.</p><div class="mini-links"><a href="https://apps.apple.com/kr/app/duck-loop/id6779206823" target="_blank" rel="noreferrer">App</a></div></article>
+          <article class="mini-project"><h3>기타 20개 이상</h3><p>코어 / MVP 개발. 최소 인력으로 빠르게 검증 가능한 형태를 제작.</p><div class="mini-links"><a href="#contact">문의</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="responsibilities">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Responsibilities</div>
+            <h2 class="section-title">주요 담당 업무</h2>
+          </div>
+          <p class="section-lead">게임 코어부터 출시 SDK 연동까지, 모바일 캐주얼 게임 클라이언트 개발에 필요한 넓은 범위를 담당했습니다.</p>
+        </div>
+        <div class="work-grid">
+          <div class="work-card"><h3>Game Core & MVP</h3><ul><li>핵심 플레이 구현</li><li>기믹 시스템 개발</li><li>빠른 MVP 제작</li></ul></div>
+          <div class="work-card"><h3>Stage Editor</h3><ul><li>런타임 모델 기반 배치</li><li>GetData 기반 JSON 저장</li><li>레벨 제작 환경 구성</li></ul></div>
+          <div class="work-card"><h3>UI / UX</h3><ul><li>인게임 UI</li><li>팝업 / 결과창</li><li>아이템 / 재화 흐름</li></ul></div>
+          <div class="work-card"><h3>Monetization</h3><ul><li>AdMob 연동</li><li>AppLovin 연동</li><li>IAP 결제 시스템</li></ul></div>
+          <div class="work-card"><h3>Persistence</h3><ul><li>로컬 저장 시스템</li><li>스테이지 데이터 저장</li><li>설정 / 재화 관리</li></ul></div>
+          <div class="work-card"><h3>Analytics</h3><ul><li>Firebase</li><li>GameAnalytics</li><li>Singular / ThinkingData</li></ul></div>
+          <div class="work-card"><h3>Handoff</h3><ul><li>이어받기 쉬운 구조</li><li>공통 메서드 패턴</li><li>명확한 책임 분리</li></ul></div>
+          <div class="work-card"><h3>Planning Support</h3><ul><li>기믹 기획</li><li>레퍼런스 분석</li><li>핵심 재미 검증</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="wrap">
+        <div class="eyebrow">Contact</div>
+        <h2>빠르게 만들고, 쉽게 이어받을 수 있는 구조로 남기는 개발자입니다.</h2>
+        <div class="contact-cards">
+          <a href="mailto:kyt2pik@gmail.com">kyt2pik@gmail.com</a>
+          <a href="https://github.com/Lovescream" target="_blank" rel="noreferrer">github.com/Lovescream</a>
+          <span>010-5121-6747</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © Kim Sejin · Unity Client Developer Portfolio
+  </footer>
+
+  <div class="modal" id="codeModal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true">
+      <div class="modal-top">
+        <div class="modal-title" id="modalTitle">Code</div>
+        <button class="modal-close" id="modalClose" type="button" aria-label="닫기">×</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <template id="code-dmv">
+    <div class="code-caption">Data는 저장/로드 값, Model은 런타임 로직, Object는 Unity 표현을 담당합니다. Cell은 자신의 하위 모델을 생성하고 다시 Data로 취합할 수 있습니다.</div>
+<pre><code class="language-csharp">public class Cell {
+    public Board Board { get; }
+    public Vector2Int Index { get; private set; }
+    public Yarn Yarn { get; set; }
+    public Block Block { get; set; }
+    public CellObject Object { get; private set; }
+
+    public Cell(Board board, CellData data) {
+        Board = board;
+        Index = data.Index;
+        Position = new Vector3(Index.x, 0, -Index.y);
+
+        if (data.Yarn != null) Yarn = new(this, data.Yarn);
+        if (data.Block != null) GenerateBlock(data.Block);
+    }
+
+    public void GenerateObject() {
+        Object = Entities.Spawn&lt;CellObject&gt;();
+        Object.Set(this);
+        Yarn?.GenerateObject();
+        Block?.GenerateObject();
+    }
+
+    public CellData GetData() {
+        return new CellData {
+            Index = Index,
+            Yarn = Yarn?.GetData(),
+            Block = Block?.GetData()
+        };
+    }
+}</code></pre>
+  </template>
+
+  <template id="code-board">
+    <div class="code-caption">Board가 스테이지의 루트가 되고, Cell과 보조 모델을 먼저 만든 뒤 Object 생성 시점에 상위에서 하위로 생성 명령을 전달합니다.</div>
+<pre><code class="language-csharp">public class Board {
+    private readonly Dictionary&lt;Vector2Int, Cell&gt; _cells = new();
+    private readonly Dictionary&lt;Vector2Int, Wall&gt; _walls = new();
+
+    public Board(StageData stageData) {
+        foreach (CellData cellData in stageData.Cells) {
+            Vector2Int index = cellData.Index;
+            _cells[index] = new Cell(this, cellData);
+        }
+
+        RecalculateSize();
+        GenerateWalls();
+        GenerateSlotBoard();
+    }
+
+    public void GenerateObject() {
+        Object = Entities.Spawn&lt;BoardObject&gt;();
+        Object.Set(this);
+
+        foreach (Cell cell in _cells.Values)
+            cell.GenerateObject();
+
+        foreach (Wall wall in _walls.Values)
+            wall.GenerateObject();
+
+        SlotBoard?.GenerateObject();
+    }
+}</code></pre>
+  </template>
+
+  <template id="code-event">
+    <div class="code-caption">상태 변화가 발생한 위치에서 필요한 후처리만 연쇄적으로 호출합니다. 기믹 제거도 각 기믹의 OnRemoved가 자신의 View 정리를 담당합니다.</div>
+<pre><code class="language-csharp">public abstract class Block : IBlock {
+    public virtual void OnRemoved() {
+        Main.Board.CheckGimmick(Cell);
+        Cell = null;
+
+        Main.Yarn.AllYarnFindExitPath();
+        Main.Board.SpawnYarns();
+        Main.Yarn.CountGimmicks();
+        Main.Board.CountGimmicks();
+    }
+
+    public virtual void Destroy() {
+        Main.Board.Remove(this);
+        BlockObject?.Destroy();
+    }
+}
+
+public class Duck {
+    private readonly List&lt;IDuckGimmick&gt; _gimmicks = new();
+
+    public void RemoveGimmick(IDuckGimmick gimmick) {
+        if (gimmick == null) return;
+        if (!_gimmicks.Remove(gimmick)) return;
+
+        gimmick.OnRemoved();
+    }
+}</code></pre>
+  </template>
+
+  <template id="code-binding">
+    <div class="code-caption">Cell과 개체의 양방향 참조를 setter에서 관리합니다. Duck은 Cell과 Rail에 동시에 존재할 수 없도록 서로를 해제합니다.</div>
+<pre><code class="language-csharp">public class Duck {
+    private Cell _cell;
+    private Rail _rail;
+
+    public Cell Cell {
+        get =&gt; _cell;
+        set {
+            if (value != null &amp;&amp; Rail != null)
+                Rail = null;
+
+            if (_cell == value) return;
+            if (_cell != null &amp;&amp; _cell.Duck == this)
+                _cell.Duck = null;
+
+            _cell = value;
+            if (_cell != null)
+                _cell.Duck = this;
+        }
+    }
+
+    public Rail Rail {
+        get =&gt; _rail;
+        set {
+            if (value != null &amp;&amp; Cell != null)
+                Cell = null;
+
+            if (_rail == value) return;
+            if (_rail != null &amp;&amp; value == null)
+                _rail.RemoveDuck(this);
+
+            _rail = value;
+            _rail?.AddDuck(this);
+        }
+    }
+}</code></pre>
+  </template>
+
+  <template id="code-gimmick">
+    <div class="code-caption">기믹은 본체의 bool 필드가 아니라 독립 객체로 분리됩니다. 본체는 목록과 조회/추가/제거만 담당하고, 각 기믹은 자기 데이터와 View를 가집니다.</div>
+<pre><code class="language-csharp">public interface IYarnGimmick {
+    Yarn Yarn { get; }
+    YarnGimmickType Type { get; }
+    YarnGimmickObject GimmickObject { get; }
+    YarnGimmickData GetData();
+    void GenerateObject();
+    void OnRemoved();
+}
+
+public abstract class YarnGimmickBase : IYarnGimmick {
+    public Yarn Yarn { get; }
+    public abstract YarnGimmickType Type { get; }
+    public YarnGimmickObject GimmickObject { get; protected set; }
+
+    protected YarnGimmickBase(Yarn yarn) {
+        Yarn = yarn;
+    }
+
+    public abstract YarnGimmickData GetData();
+    public abstract void GenerateObject();
+
+    public virtual void OnRemoved() {
+        GimmickObject?.Destroy();
+    }
+}
+
+public class Yarn {
+    private readonly List&lt;IYarnGimmick&gt; _gimmicks = new();
+
+    public bool Has(YarnGimmickType type)
+        =&gt; _gimmicks.Any(g =&gt; g.Type == type);
+
+    public bool TryGet&lt;T&gt;(out T gimmick) where T : class, IYarnGimmick {
+        gimmick = _gimmicks.OfType&lt;T&gt;().FirstOrDefault();
+        return gimmick != null;
+    }
+}</code></pre>
+  </template>
+
+  <template id="code-blossom-entity">
+    <div class="code-caption">BlossomPackage / NyoPack은 반복되는 Entity 생성, Pool 반환, Resource 캐싱을 공통화하기 위한 기반입니다.</div>
+<pre><code class="language-csharp">public abstract class Entity : MonoBehaviour {
+    internal string PoolKey { get; private set; }
+    private bool _initialized;
+
+    public bool Initialize() {
+        if (_initialized) return false;
+        OnInitialize();
+        _initialized = true;
+        return true;
+    }
+
+    protected virtual void OnInitialize() { }
+    public virtual void OnSpawned() { }
+    public virtual void OnRelease() { }
+}
+
+public static class Entities {
+    public static T Spawn&lt;T&gt;(string key = null, Transform parent = null)
+        where T : Entity =&gt; EntityManager.Spawn&lt;T&gt;(key, parent);
+
+    public static void Despawn&lt;T&gt;(T entity) where T : Entity
+        =&gt; EntityManager.Despawn(entity);
+}
+
+public static class Res {
+    public static void Load&lt;T&gt;(string path) where T : Object
+        =&gt; ResourceManager.Load&lt;T&gt;(path, ResourceKeyPolicy.Name, null);
+
+    public static T Get&lt;T&gt;(string key) where T : Object
+        =&gt; ResourceManager.Get&lt;T&gt;(key);
+}</code></pre>
+  </template>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+  <script>
+    const modal = document.getElementById('codeModal');
+    const modalBody = document.getElementById('modalBody');
+    const modalTitle = document.getElementById('modalTitle');
+    const closeBtn = document.getElementById('modalClose');
+
+    function openCode(id, label) {
+      const tpl = document.getElementById(id);
+      if (!tpl) return;
+      modalTitle.textContent = label || 'Code';
+      modalBody.innerHTML = tpl.innerHTML;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      modalBody.querySelectorAll('pre code').forEach((el) => hljs.highlightElement(el));
+    }
+
+    function closeCode() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      modalBody.innerHTML = '';
+    }
+
+    document.querySelectorAll('[data-code]').forEach((btn) => {
+      btn.addEventListener('click', () => openCode(btn.dataset.code, btn.textContent.trim()));
+    });
+    closeBtn.addEventListener('click', closeCode);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeCode(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCode(); });
+  </script>
+</body>
+</html>
