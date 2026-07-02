@@ -66,6 +66,19 @@
     .brand-mark img { width:100%; height:100%; object-fit:cover; display:block; }
     .icon-inline { width:18px; height:18px; object-fit:contain; display:inline-block; flex:0 0 auto; }
     .btn-icon { width:18px; height:18px; object-fit:contain; display:inline-block; }
+
+    /* White icon variants for dark backgrounds */
+    .white-icon {
+      filter: brightness(0) invert(1) contrast(1.15) drop-shadow(0 0 3px rgba(0,0,0,.55)) !important;
+      opacity: 1 !important;
+      mix-blend-mode: normal !important;
+    }
+    img.white-icon[src$="AppStore.png"],
+    img.white-icon[src$="Github.png"],
+    img.white-icon[src$="Mail.png"],
+    img.white-icon[src$="Phone.png"] {
+      filter: brightness(0) invert(1) contrast(1.15) drop-shadow(0 0 3px rgba(0,0,0,.55)) !important;
+    }
     .contact-line span, .contact-line a { display:inline-flex; align-items:center; gap:6px; }
     .profile-card { position:relative; z-index:1; display:flex; align-items:center; gap:15px; padding:16px; border-radius:20px; background:rgba(13,16,32,.55); border:1px solid var(--line); margin-bottom:16px; }
     .profile-avatar { width:64px; height:64px; border-radius:20px; object-fit:cover; border:1px solid rgba(255,255,255,.2); }
@@ -272,13 +285,13 @@
           <p class="hero-desc">코어 플레이와 MVP를 빠르게 구현하고, 다른 개발자가 이어받기 쉬운 구조로 정리하는 개발을 지향합니다. 반복되는 게임 구조는 데이터 기반 생성, 명확한 바인딩, 기믹 확장 구조로 시스템화했습니다.</p>
           <div class="hero-actions">
             <a class="btn primary" href="#featured">대표 프로젝트 보기</a>
-            <a class="btn" href="https://github.com/Lovescream" target="_blank" rel="noreferrer"><img class="btn-icon" src="Assets/Icons/Github.png" alt="">GitHub</a>
-            <a class="btn" href="mailto:kyt2pik@gmail.com"><img class="btn-icon" src="Assets/Icons/Mail.png" alt="">Email</a>
+            <a class="btn" href="https://github.com/Lovescream" target="_blank" rel="noreferrer"><img class="btn-icon white-icon" src="Assets/Icons/Github.png" alt="">GitHub</a>
+            <a class="btn" href="mailto:kyt2pik@gmail.com"><img class="btn-icon white-icon" src="Assets/Icons/Mail.png" alt="">Email</a>
           </div>
           <div class="contact-line">
-            <span><img class="icon-inline" src="Assets/Icons/Github.png" alt="GitHub"> <a href="https://github.com/Lovescream" target="_blank" rel="noreferrer">github.com/Lovescream</a></span>
-            <span><img class="icon-inline" src="Assets/Icons/Mail.png" alt="Email"> <a href="mailto:kyt2pik@gmail.com">kyt2pik@gmail.com</a></span>
-            <span><img class="icon-inline" src="Assets/Icons/Phone.png" alt="Phone"> 010-5121-6747</span>
+            <span><img class="icon-inline white-icon" src="Assets/Icons/Github.png" alt="GitHub"> <a href="https://github.com/Lovescream" target="_blank" rel="noreferrer">github.com/Lovescream</a></span>
+            <span><img class="icon-inline white-icon" src="Assets/Icons/Mail.png" alt="Email"> <a href="mailto:kyt2pik@gmail.com">kyt2pik@gmail.com</a></span>
+            <span><img class="icon-inline white-icon" src="Assets/Icons/Phone.png" alt="Phone"> 010-5121-6747</span>
           </div>
         </div>
         <aside class="hero-panel" aria-label="핵심 수치">
@@ -455,17 +468,17 @@
           <article class="project-feature">
             <div class="app-head"><img class="app-icon app-icon-img" src="Assets/AppIcons/DropTheCat.png" alt="빠지냥 아이콘"><div><div class="app-title">빠지냥</div><div class="app-role">핵심 개발 · 핵심 플레이 및 기믹 기획 · 라이브</div></div></div>
             <p>회사 최대 매출 및 대표작. 수많은 후속작이 이 게임의 컨셉과 코드를 기반으로 만들어졌습니다.</p>
-            <div class="store-links"><a href="https://play.google.com/store/apps/details?id=com.cat.hole.puzzle.aos" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play Store</a><a href="https://apps.apple.com/kr/app/%EB%B9%A0%EC%A7%80%EB%83%A5-drop-the-cat/id6749132002" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App Store</a></div>
+            <div class="store-links"><a href="https://play.google.com/store/apps/details?id=com.cat.hole.puzzle.aos" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play Store</a><a href="https://apps.apple.com/kr/app/%EB%B9%A0%EC%A7%80%EB%83%A5-drop-the-cat/id6749132002" target="_blank" rel="noreferrer"><img class="store-icon white-icon" src="Assets/Icons/AppStore.png" alt="">App Store</a></div>
           </article>
           <article class="project-feature">
             <div class="app-head"><img class="app-icon app-icon-img" src="Assets/AppIcons/SandCatBlast.png" alt="모먹냥 아이콘"><div><div class="app-title">모먹냥 · Sand Cat Blast</div><div class="app-role">핵심 개발 및 기획</div></div></div>
             <p>StageData, Board, Cell, Cat, Block, Gimmick 구조가 강하게 드러나는 프로젝트입니다. 이후 공통 구조로 발전시키기 좋은 기반이 되었습니다.</p>
-            <div class="store-links"><a href="https://play.google.com/store/apps/details?id=com.sand.cat.loop.blast.aos" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play Store</a><a href="https://apps.apple.com/kr/app/%EB%AA%A8%EB%A8%B9%EB%83%A5-sand-cat/id6757536148" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App Store</a></div>
+            <div class="store-links"><a href="https://play.google.com/store/apps/details?id=com.sand.cat.loop.blast.aos" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play Store</a><a href="https://apps.apple.com/kr/app/%EB%AA%A8%EB%A8%B9%EB%83%A5-sand-cat/id6757536148" target="_blank" rel="noreferrer"><img class="store-icon white-icon" src="Assets/Icons/AppStore.png" alt="">App Store</a></div>
           </article>
           <article class="project-feature">
             <div class="app-head"><img class="app-icon app-icon-img" src="Assets/AppIcons/BlockCandyJam.png" alt="블럭캔디잼 아이콘"><div><div class="app-title">Block Candy Jam</div><div class="app-role">핵심 개발</div></div></div>
             <p>블럭 형태의 후속작들이 이 게임의 컨셉과 코드를 기반으로 만들어졌습니다. 빠른 코어 구현과 확장 가능한 후속작 기반 코드가 장점입니다.</p>
-            <div class="store-links"><a href="https://play.google.com/store/apps/details?id=com.color.jelly.jam.puzzle&hl=ko" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play Store</a><a href="https://apps.apple.com/kr/app/%EB%B8%94%EB%A1%9D-%EC%BA%94%EB%94%94-%EC%9E%BC/id6744118635" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App Store</a></div>
+            <div class="store-links"><a href="https://play.google.com/store/apps/details?id=com.color.jelly.jam.puzzle&hl=ko" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play Store</a><a href="https://apps.apple.com/kr/app/%EB%B8%94%EB%A1%9D-%EC%BA%94%EB%94%94-%EC%9E%BC/id6744118635" target="_blank" rel="noreferrer"><img class="store-icon white-icon" src="Assets/Icons/AppStore.png" alt="">App Store</a></div>
           </article>
           <article class="project-feature">
             <div class="app-head"><img class="app-icon app-icon-img" src="Assets/AppIcons/WoodBlock.png" alt="우드드득 아이콘"><div><div class="app-title">우드드득</div><div class="app-role">핵심 개발 및 기획</div></div></div>
@@ -486,13 +499,13 @@
           <p class="section-lead">대표 프로젝트 외에도 다수의 코어 및 MVP 개발에 참여했습니다.</p>
         </div>
         <div class="project-grid">
-          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/CatEscape.png" alt="냥탈출 아이콘"><h3>냥탈출</h3></div><p>코어 및 MVP 개발. 게임 핵심 플레이 및 기믹 기획.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.cat.away.jam.aos" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play</a><a href="https://apps.apple.com/kr/app/cat-escape-%EA%B3%A0%EC%96%91%EC%9D%B4-%EB%B0%A9%ED%83%88%EC%B6%9C/id6753330488" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
-          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/CatAway.png" alt="고양이 액체설 아이콘"><h3>고양이 액체설</h3></div><p>코어 및 MVP 개발.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.cat.away.escape.aos" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play</a><a href="https://apps.apple.com/kr/app/cat-away-%EA%B3%A0%EC%96%91%EC%9D%B4-%EC%95%A1%EC%B2%B4%EC%84%A4-%EB%A1%9C%EC%A7%81-%ED%8D%BC%EC%A6%90-%EA%B2%8C%EC%9E%84/id6755174303" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
-          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/CatCapsule.png" alt="냥캡슐 아웃 아이콘"><h3>냥캡슐 아웃</h3></div><p>코어 및 MVP 개발.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.capsule.cat.aos" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play</a><a href="https://apps.apple.com/us/app/catsule-out/id6759559942" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
-          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/KnitFactory.png" alt="Knit Factory 아이콘"><h3>Knit Factory</h3></div><p>코어 및 MVP 개발. BeltBoard, BoxQueue, Knit 흐름 구조.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.actionfit.cat.factory" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play</a><a href="https://apps.apple.com/kr/app/knit-factory-cute-puzzle-flow/id6756097866" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
-          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/DuckJam.png" alt="덕잼3D 아이콘"><h3>덕잼3D · 오리 꽥꽥 3D</h3></div><p>코어 및 MVP 개발.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.duck.jam" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play</a><a href="https://apps.apple.com/kr/app/%EB%8D%95%EC%9E%BC3d/id6749844595" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
-          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/YarnLoop.png" alt="Yarn Loop 아이콘"><h3>Yarn Loop</h3></div><p>핵심 개발 및 기획. BlossomPackage 기반 프로젝트.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.yarn.loop.aos" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play</a><a href="https://apps.apple.com/us/app/yarn-loop-wool-puzzle/id6761704577" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
-          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/DuckLoop.png" alt="Duck Loop 아이콘"><h3>Duck Loop</h3></div><p>코어 및 MVP 개발. Rail / Slot / Duck 구조.</p><div class="mini-links"><a href="https://apps.apple.com/kr/app/duck-loop/id6779206823" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
+          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/CatEscape.png" alt="냥탈출 아이콘"><h3>냥탈출</h3></div><p>코어 및 MVP 개발. 게임 핵심 플레이 및 기믹 기획.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.cat.away.jam.aos" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play</a><a href="https://apps.apple.com/kr/app/cat-escape-%EA%B3%A0%EC%96%91%EC%9D%B4-%EB%B0%A9%ED%83%88%EC%B6%9C/id6753330488" target="_blank" rel="noreferrer"><img class="store-icon white-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
+          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/CatAway.png" alt="고양이 액체설 아이콘"><h3>고양이 액체설</h3></div><p>코어 및 MVP 개발.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.cat.away.escape.aos" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play</a><a href="https://apps.apple.com/kr/app/cat-away-%EA%B3%A0%EC%96%91%EC%9D%B4-%EC%95%A1%EC%B2%B4%EC%84%A4-%EB%A1%9C%EC%A7%81-%ED%8D%BC%EC%A6%90-%EA%B2%8C%EC%9E%84/id6755174303" target="_blank" rel="noreferrer"><img class="store-icon white-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
+          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/CatCapsule.png" alt="냥캡슐 아웃 아이콘"><h3>냥캡슐 아웃</h3></div><p>코어 및 MVP 개발.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.capsule.cat.aos" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play</a><a href="https://apps.apple.com/us/app/catsule-out/id6759559942" target="_blank" rel="noreferrer"><img class="store-icon white-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
+          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/KnitFactory.png" alt="Knit Factory 아이콘"><h3>Knit Factory</h3></div><p>코어 및 MVP 개발. BeltBoard, BoxQueue, Knit 흐름 구조.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.actionfit.cat.factory" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play</a><a href="https://apps.apple.com/kr/app/knit-factory-cute-puzzle-flow/id6756097866" target="_blank" rel="noreferrer"><img class="store-icon white-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
+          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/DuckJam.png" alt="덕잼3D 아이콘"><h3>덕잼3D · 오리 꽥꽥 3D</h3></div><p>코어 및 MVP 개발.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.duck.jam" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play</a><a href="https://apps.apple.com/kr/app/%EB%8D%95%EC%9E%BC3d/id6749844595" target="_blank" rel="noreferrer"><img class="store-icon white-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
+          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/YarnLoop.png" alt="Yarn Loop 아이콘"><h3>Yarn Loop</h3></div><p>핵심 개발 및 기획. BlossomPackage 기반 프로젝트.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.yarn.loop.aos" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play</a><a href="https://apps.apple.com/us/app/yarn-loop-wool-puzzle/id6761704577" target="_blank" rel="noreferrer"><img class="store-icon white-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
+          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/DuckLoop.png" alt="Duck Loop 아이콘"><h3>Duck Loop</h3></div><p>코어 및 MVP 개발. Rail / Slot / Duck 구조.</p><div class="mini-links"><a href="https://apps.apple.com/kr/app/duck-loop/id6779206823" target="_blank" rel="noreferrer"><img class="store-icon white-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
           <article class="mini-project"><div class="mini-head"><h3>기타 20개 이상</h3></div><p>코어 / MVP 개발. 최소 인력으로 빠르게 검증 가능한 형태를 제작.</p></article>
         </div>
       </div>
@@ -525,9 +538,9 @@
         <div class="eyebrow">Contact</div>
         <h2>빠르게 만들고, 쉽게 이어받을 수 있는 구조로 남기는 개발자입니다.</h2>
         <div class="contact-cards">
-          <a href="mailto:kyt2pik@gmail.com"><img class="icon-inline" src="Assets/Icons/Mail.png" alt="">kyt2pik@gmail.com</a>
-          <a href="https://github.com/Lovescream" target="_blank" rel="noreferrer"><img class="icon-inline" src="Assets/Icons/Github.png" alt="">github.com/Lovescream</a>
-          <span><img class="icon-inline" src="Assets/Icons/Phone.png" alt="">010-5121-6747</span>
+          <a href="mailto:kyt2pik@gmail.com"><img class="icon-inline white-icon" src="Assets/Icons/Mail.png" alt="">kyt2pik@gmail.com</a>
+          <a href="https://github.com/Lovescream" target="_blank" rel="noreferrer"><img class="icon-inline white-icon" src="Assets/Icons/Github.png" alt="">github.com/Lovescream</a>
+          <span><img class="icon-inline white-icon" src="Assets/Icons/Phone.png" alt="">010-5121-6747</span>
         </div>
       </div>
     </section>
