@@ -62,6 +62,15 @@
       color: #0d1020; font-weight: 900;
       box-shadow: 0 10px 40px rgba(139,233,214,.22);
     }
+    .brand-mark { overflow:hidden; }
+    .brand-mark img { width:100%; height:100%; object-fit:cover; display:block; }
+    .icon-inline { width:18px; height:18px; object-fit:contain; display:inline-block; flex:0 0 auto; }
+    .btn-icon { width:18px; height:18px; object-fit:contain; display:inline-block; }
+    .contact-line span, .contact-line a { display:inline-flex; align-items:center; gap:6px; }
+    .profile-card { position:relative; z-index:1; display:flex; align-items:center; gap:15px; padding:16px; border-radius:20px; background:rgba(13,16,32,.55); border:1px solid var(--line); margin-bottom:16px; }
+    .profile-avatar { width:64px; height:64px; border-radius:20px; object-fit:cover; border:1px solid rgba(255,255,255,.2); }
+    .profile-card b { color:var(--ink); display:block; font-size:18px; }
+    .profile-card span { color:var(--muted); font-family:var(--mono); font-size:12px; }
     .nav-links { display:flex; gap: 18px; flex-wrap: wrap; font-size: 14px; color: var(--muted); }
     .nav-links a:hover { color: var(--accent); }
 
@@ -153,10 +162,10 @@
     .code-open::before { content:"</>"; font-family:var(--mono); }
 
     .framework { display:grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-    .module-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
-    .module { padding: 13px 14px; border-radius: 16px; border:1px solid var(--line); background: rgba(13,16,32,.42); }
+    .module-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 16px; }
+    .module { padding: 14px 15px; border-radius: 16px; border:1px solid var(--line); background: rgba(13,16,32,.42); }
     .module b { color: var(--ink); display:block; font-size:14px; }
-    .module span { color: var(--muted); font-size:12px; }
+    .module span { color: var(--muted); font-size:12px; line-height:1.45; display:block; margin-top:4px; }
 
     .featured-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
     .project-feature { position:relative; min-height: 280px; overflow:hidden; border-radius: 28px; border:1px solid var(--line); padding: 26px; background: linear-gradient(135deg, rgba(255,255,255,.1), rgba(255,255,255,.045)); }
@@ -166,19 +175,23 @@
     .app-icon.purple { background: linear-gradient(135deg, var(--accent2), #e0d8ff); }
     .app-icon.yellow { background: linear-gradient(135deg, var(--accent3), #fff0bd); }
     .app-icon.pink { background: linear-gradient(135deg, #ff8cc6, #ffd2e8); }
+    .app-icon.app-icon-img { display:block; object-fit:cover; padding:0; color:transparent; background:rgba(255,255,255,.08); }
     .app-title { color: var(--ink); font-size: 24px; font-weight: 900; letter-spacing:-.03em; }
     .app-role { color: var(--accent); font-family:var(--mono); font-size: 12px; margin-top: 2px; }
     .project-feature p { position:relative; z-index:1; color:var(--text); }
     .store-links { position:relative; z-index:1; display:flex; gap: 8px; flex-wrap:wrap; margin-top: 18px; }
-    .store-links a { font-family:var(--mono); font-size:12px; padding: 8px 11px; border-radius: 999px; border:1px solid var(--line); color: var(--ink); background: rgba(13,16,32,.35); }
+    .store-links a { font-family:var(--mono); font-size:12px; padding: 8px 11px; border-radius: 999px; border:1px solid var(--line); color: var(--ink); background: rgba(13,16,32,.35); display:inline-flex; align-items:center; gap:6px; }
     .store-links a:hover { border-color: rgba(139,233,214,.5); color: var(--accent); }
+    .store-icon { width:16px; height:16px; object-fit:contain; }
 
     .project-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     .mini-project { padding: 18px; border-radius: 20px; border:1px solid var(--line); background: rgba(255,255,255,.055); min-height: 188px; display:flex; flex-direction:column; }
-    .mini-project h3 { color:var(--ink); font-size:18px; margin-bottom: 8px; }
+    .mini-head { display:flex; align-items:center; gap:11px; margin-bottom:10px; }
+    .mini-icon { width:42px; height:42px; border-radius:13px; object-fit:cover; border:1px solid var(--line); flex:0 0 auto; background:rgba(255,255,255,.08); }
+    .mini-project h3 { color:var(--ink); font-size:18px; margin:0; }
     .mini-project p { color: var(--muted); font-size: 14px; flex:1; }
-    .mini-links { display:flex; gap: 8px; margin-top: 14px; }
-    .mini-links a { font-size: 12px; color: var(--accent); font-family:var(--mono); }
+    .mini-links { display:flex; gap: 8px; margin-top: 14px; flex-wrap:wrap; }
+    .mini-links a { font-size: 12px; color: var(--accent); font-family:var(--mono); display:inline-flex; align-items:center; gap:5px; }
 
     .work-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
     .work-card { padding: 20px; border-radius: 20px; border: 1px solid var(--line); background: rgba(255,255,255,.055); }
@@ -200,6 +213,16 @@
     .modal-close:hover { color: var(--ink); }
     .modal-body { overflow:auto; padding: 22px; }
     .code-caption { color: var(--muted); margin-bottom: 14px; font-size: 14px; }
+    .code-tabs { display:flex; flex-wrap:wrap; gap:8px; margin: 12px 0 16px; }
+    .code-tab {
+      border:1px solid rgba(139,233,214,.28); background: rgba(139,233,214,.08); color: var(--accent);
+      border-radius: 999px; padding: 8px 12px; font-family: var(--mono); font-size: 12px; font-weight: 800; cursor:pointer;
+    }
+    .code-tab.active { background: linear-gradient(135deg, var(--accent), #c8fff4); color:#071119; border-color: transparent; }
+    .code-pane { display:none; }
+    .code-pane.active { display:block; }
+    .modal-body pre { margin: 0 0 16px; }
+
     pre { margin:0; overflow:auto; border-radius: 18px; border:1px solid rgba(255,255,255,.12); background:#0d1117; }
     code.hljs { font-family: var(--mono); font-size: 13.5px; line-height: 1.62; padding: 18px 20px; }
     .code-template { display:none; }
@@ -227,7 +250,7 @@
 <body>
   <nav class="nav">
     <div class="wrap nav-inner">
-      <a href="#top" class="brand"><span class="brand-mark">S</span><span>김세진 Portfolio</span></a>
+      <a href="#top" class="brand"><span class="brand-mark"><img src="Assets/Icons/Profile.png" alt="김세진 프로필"></span><span>김세진 Portfolio</span></a>
       <div class="nav-links">
         <a href="#philosophy">철학</a>
         <a href="#systems">게임 시스템</a>
@@ -246,19 +269,20 @@
           <div class="eyebrow">Unity Client Developer</div>
           <h1>김세진</h1>
           <p class="hero-title-sub">빠른 구현, 쉽고 명확한 코드를 지향하는 Unity 클라이언트 개발자</p>
-          <p class="hero-desc">코어 플레이와 MVP를 빠르게 구현하고, 다른 개발자가 이어받기 쉬운 구조로 정리하는 개발을 지향합니다. 반복되는 퍼즐 게임 구조는 데이터 기반 생성, 명확한 바인딩, 기믹 확장 구조로 시스템화했습니다.</p>
+          <p class="hero-desc">코어 플레이와 MVP를 빠르게 구현하고, 다른 개발자가 이어받기 쉬운 구조로 정리하는 개발을 지향합니다. 반복되는 게임 구조는 데이터 기반 생성, 명확한 바인딩, 기믹 확장 구조로 시스템화했습니다.</p>
           <div class="hero-actions">
             <a class="btn primary" href="#featured">대표 프로젝트 보기</a>
-            <a class="btn" href="https://github.com/Lovescream" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="btn" href="mailto:kyt2pik@gmail.com">Email</a>
+            <a class="btn" href="https://github.com/Lovescream" target="_blank" rel="noreferrer"><img class="btn-icon" src="Assets/Icons/Github.png" alt="">GitHub</a>
+            <a class="btn" href="mailto:kyt2pik@gmail.com"><img class="btn-icon" src="Assets/Icons/Mail.png" alt="">Email</a>
           </div>
           <div class="contact-line">
-            <span>G: <a href="https://github.com/Lovescream" target="_blank" rel="noreferrer">github.com/Lovescream</a></span>
-            <span>M: <a href="mailto:kyt2pik@gmail.com">kyt2pik@gmail.com</a></span>
-            <span>P: 010-5121-6747</span>
+            <span><img class="icon-inline" src="Assets/Icons/Github.png" alt="GitHub"> <a href="https://github.com/Lovescream" target="_blank" rel="noreferrer">github.com/Lovescream</a></span>
+            <span><img class="icon-inline" src="Assets/Icons/Mail.png" alt="Email"> <a href="mailto:kyt2pik@gmail.com">kyt2pik@gmail.com</a></span>
+            <span><img class="icon-inline" src="Assets/Icons/Phone.png" alt="Phone"> 010-5121-6747</span>
           </div>
         </div>
         <aside class="hero-panel" aria-label="핵심 수치">
+          <div class="profile-card"><img class="profile-avatar" src="Assets/Icons/Profile.png" alt="김세진 프로필 아이콘"><div><b>김세진</b><span>Unity Client Developer</span></div></div>
           <div class="metric-grid">
             <div class="metric"><div class="num">20+</div><div class="label">코어 / MVP 개발</div></div>
             <div class="metric"><div class="num">3~4</div><div class="label">월간 MVP 제작 경험</div></div>
@@ -268,7 +292,7 @@
           <div class="signature">
             <div class="sig"><b>Fast MVP</b><span>core first</span></div>
             <div class="sig"><b>Readable Code</b><span>easy handoff</span></div>
-            <div class="sig"><b>Reusable Puzzle Architecture</b><span>expandable</span></div>
+            <div class="sig"><b>Reusable Game Architecture</b><span>expandable</span></div>
           </div>
         </aside>
       </div>
@@ -290,7 +314,7 @@
           </article>
           <article class="card">
             <h3>확장성 고려</h3>
-            <p>현재 기획이 단순해도 변경 가능성을 염두에 둡니다. 고정 맵처럼 보여도 가변 보드와 데이터 기반 구조를 고려합니다.</p>
+            <p>기획이 단순해도 변경 가능성을 염두에 둡니다. 기획 변경이나 기능 수정 등에 유연하게 대처합니다.</p>
           </article>
           <article class="card purple">
             <h3>쉬운 코드</h3>
@@ -322,10 +346,10 @@
       <div class="wrap">
         <div class="section-head">
           <div>
-            <div class="eyebrow">Reusable Puzzle Architecture</div>
+            <div class="eyebrow">Reusable Game Architecture</div>
             <h2 class="section-title">공통 게임 시스템 구조</h2>
           </div>
-          <p class="section-lead">여러 퍼즐 프로젝트에서 반복적으로 사용한 구조입니다. 핵심은 데이터 기반 생성, 명확한 책임 분리, 그리고 기믹 확장성입니다.</p>
+          <p class="section-lead">여러 게임 프로젝트에서 반복적으로 사용한 구조입니다. 핵심은 데이터 기반 생성, 명확한 책임 분리, 그리고 기믹 확장성입니다.</p>
         </div>
         <div class="system-layout">
           <div class="system-index">
@@ -341,7 +365,7 @@
               <p>특정 스테이지에서 생성해야 하는 값은 Data가 담고, 런타임의 실제 상태와 규칙은 Model이 담당하며, Unity 오브젝트와 애니메이션은 View/Object가 담당하도록 분리했습니다.</p>
               <div class="flow"><span>CellData</span><i>→</i><span>Cell</span><i>→</i><span>CellObject</span><i>/</i><span>CatData</span><i>→</i><span>Cat</span><i>→</i><span>CatObject</span></div>
               <p>이 분리 덕분에 저장/로드, 스테이지 에디터, 런타임 로직, 연출 수정이 서로 강하게 얽히지 않습니다.</p>
-              <button class="btn code-open" data-code="code-dmv">코드 보기 — CellData / Cell / CellObject</button>
+              <button class="btn code-open" data-code="code-dmv">코드 보기 — CellData · Cell · CellObject</button>
             </article>
 
             <article id="sys-board" class="system-card">
@@ -349,7 +373,7 @@
               <p>스테이지 전체의 루트는 Board입니다. Board가 Cell을 생성하고, Cell은 자신 위에 놓인 모델을 생성합니다. 이후 상위 Object부터 하위 Object까지 순차적으로 생성합니다.</p>
               <div class="flow"><span>StageData</span><i>→</i><span>Board</span><i>→</i><span>Cell</span><i>→</i><span>Block / Yarn / Cat / Duck</span><i>→</i><span>Object</span></div>
               <p>씬에 오브젝트가 흩어지지 않고, Board 하나를 기준으로 스테이지 전체를 추적할 수 있습니다.</p>
-              <button class="btn code-open" data-code="code-board">코드 보기 — Board 생성 흐름</button>
+              <button class="btn code-open" data-code="code-board">코드 보기 — Board · Cell · Block 생성 흐름</button>
             </article>
 
             <article id="sys-event" class="system-card">
@@ -373,7 +397,7 @@
               <div class="flow"><span>Owner</span><i>→</i><span>List&lt;IGimmick&gt;</span><i>→</i><span>GimmickData</span><i>→</i><span>GimmickObject</span></div>
               <p>기믹은 본체와 분리되어 독립적으로 동작하고 제거되며, 새로운 기믹을 추가할 때 본체 클래스의 수정량을 줄일 수 있습니다. Hidden, Frozen, Switch, Connector 같은 규칙을 기능 단위로 확장할 수 있습니다.</p>
               <div class="chip-row"><span class="chip">확장성</span><span class="chip p">책임 분리</span><span class="chip y">View 독립</span><span class="chip">GetData 저장 지원</span></div>
-              <button class="btn code-open" data-code="code-gimmick">코드 보기 — Gimmick Interface / Base</button>
+              <button class="btn code-open" data-code="code-gimmick">코드 보기 — 기믹 구조 상세</button>
             </article>
           </div>
         </div>
@@ -392,23 +416,26 @@
         <div class="framework">
           <article class="card accent">
             <h3>왜 만들었나</h3>
-            <p>프로젝트마다 반복되던 Entity, Pool, Resource, Scene, Save, Ads/IAP, Analytics 구조를 매번 다시 작성하지 않기 위해 공통 패키지로 분리했습니다.</p>
-            <div class="chip-row"><span class="chip">Entity</span><span class="chip">Pooling</span><span class="chip">Resource Cache</span><span class="chip">Scene</span><span class="chip">Akiv Save</span><span class="chip">Ads / IAP</span><span class="chip">Analytics</span></div>
+            <p>BlossomPackage는 매 프로젝트마다 다시 작성하던 저장, 리소스 로딩, 오브젝트 생성, UI, 분석, 광고, IAP, 플랫폼 SDK 연동을 작고 명확한 패키지 단위로 나눈 개발 도구 모음입니다.</p>
+            <p style="margin-top:10px">무겁고 거대한 프레임워크가 아니라, 필요한 기능만 골라 사용할 수 있는 모듈형 패키지를 지향합니다. Provider, Spawner, Service, Handler 같은 인터페이스 기반 구조를 사용해 프로젝트마다 다른 리소스 관리, 프리팹 생성, UI 구조, SDK 조합을 연결할 수 있게 했습니다.</p>
+            <div class="chip-row"><span class="chip">Core</span><span class="chip">Persistence</span><span class="chip">Networking</span><span class="chip">Analytics</span><span class="chip">Platform</span><span class="chip">Monetization</span><span class="chip">Presentation</span><span class="chip">PackageManager</span></div>
             <div class="hero-actions" style="margin-top:22px">
               <a class="btn primary" href="https://github.com/Lovescream/NyoPack" target="_blank" rel="noreferrer">NyoPack GitHub</a>
-              <button class="btn code-open" data-code="code-blossom-entity">코드 보기 — Entity / Pool / Resource</button>
+              <button class="btn code-open" data-code="code-blossom-entity">코드 보기 — Core · Akiv · Analytics · Monetization</button>
             </div>
           </article>
           <article class="card purple">
-            <h3>제공하는 기반</h3>
-            <p>게임별 규칙은 각 프로젝트에 두고, 반복되는 생성/반환/로드/씬 이동/저장/분석 전송 같은 인프라를 패키지 쪽으로 모았습니다.</p>
+            <h3>패키지 구성</h3>
+            <p>게임의 핵심 재미는 프로젝트에 남기고, 반복되는 기반 기능은 패키지로 분리했습니다. 작은 프로젝트에서는 빠르게 붙여 쓰고, 규모가 커지는 프로젝트에서는 인터페이스 구현체를 교체해 확장할 수 있게 했습니다.</p>
             <div class="module-grid">
-              <div class="module"><b>Entities</b><span>Spawn / Despawn</span></div>
-              <div class="module"><b>Pools</b><span>Prefab reuse</span></div>
-              <div class="module"><b>Res</b><span>Resource cache</span></div>
-              <div class="module"><b>Scenes</b><span>Scene transition</span></div>
-              <div class="module"><b>Akiv</b><span>Local data</span></div>
-              <div class="module"><b>Analytics</b><span>Multi service</span></div>
+              <div class="module"><b>Blossom.Core</b><span>컴포넌트 탐색, 리소스 캐싱, 오브젝트 풀링, Entity 생성, 씬 전환, UI 흐름을 정돈하는 기반 패키지입니다.</span></div>
+              <div class="module"><b>Persistence</b><span>Akiv 기반 로컬 저장 시스템입니다. 값 변경을 감지하고 필요한 타이밍에 저장할 수 있도록 구성했습니다.</span></div>
+              <div class="module"><b>Networking</b><span>온라인 연결 상태 확인, 재시도, 상태 추적을 담당합니다. 광고, IAP, SDK 초기화 전 검증 용도로 사용할 수 있습니다.</span></div>
+              <div class="module"><b>Analytics</b><span>Firebase, GameAnalytics, Singular 등 여러 분석 SDK를 하나의 공통 이벤트 API로 묶는 이벤트 허브입니다.</span></div>
+              <div class="module"><b>Platform</b><span>외부 SDK 초기화와 프로젝트 코드를 분리합니다. SDK별 초기화 과정을 얇은 래퍼로 감싸 공통 흐름에 연결합니다.</span></div>
+              <div class="module"><b>Monetization</b><span>광고와 인앱결제 흐름을 통합합니다. 로드, 표시, 보상, 구매, 복원, 수익 분석 전송을 이벤트 중심으로 처리합니다.</span></div>
+              <div class="module"><b>Presentation</b><span>보상 획득 연출, 리뷰 요청, 햅틱 등 표현 계층을 게임 로직과 분리해 연결하는 보조 패키지입니다.</span></div>
+              <div class="module"><b>PackageManager</b><span>Blossom 패키지 설치, 제거, 갱신, 의존성, Define Symbol 적용을 Unity Editor 안에서 관리하는 도구입니다.</span></div>
             </div>
           </article>
         </div>
@@ -426,24 +453,24 @@
         </div>
         <div class="featured-grid">
           <article class="project-feature">
-            <div class="app-head"><div class="app-icon">빠</div><div><div class="app-title">빠지냥</div><div class="app-role">핵심 개발 · 핵심 플레이 및 기믹 기획 · 라이브</div></div></div>
+            <div class="app-head"><img class="app-icon app-icon-img" src="Assets/AppIcons/DropTheCat.png" alt="빠지냥 아이콘"><div><div class="app-title">빠지냥</div><div class="app-role">핵심 개발 · 핵심 플레이 및 기믹 기획 · 라이브</div></div></div>
             <p>회사 최대 매출 및 대표작. 수많은 후속작이 이 게임의 컨셉과 코드를 기반으로 만들어졌습니다.</p>
-            <div class="store-links"><a href="https://play.google.com/store/apps/details?id=com.cat.hole.puzzle.aos" target="_blank" rel="noreferrer">Play Store</a><a href="https://apps.apple.com/kr/app/%EB%B9%A0%EC%A7%80%EB%83%A5-drop-the-cat/id6749132002" target="_blank" rel="noreferrer">App Store</a></div>
+            <div class="store-links"><a href="https://play.google.com/store/apps/details?id=com.cat.hole.puzzle.aos" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play Store</a><a href="https://apps.apple.com/kr/app/%EB%B9%A0%EC%A7%80%EB%83%A5-drop-the-cat/id6749132002" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App Store</a></div>
           </article>
           <article class="project-feature">
-            <div class="app-head"><div class="app-icon purple">모</div><div><div class="app-title">모먹냥 · Sand Cat Blast</div><div class="app-role">핵심 개발 및 기획</div></div></div>
-            <p>StageData, Board, Cell, Cat, Block, Gimmick 구조가 강하게 드러나는 퍼즐 프로젝트입니다. 이후 공통 구조로 발전시키기 좋은 기반이 되었습니다.</p>
-            <div class="store-links"><a href="https://play.google.com/store/apps/details?id=com.sand.cat.loop.blast.aos" target="_blank" rel="noreferrer">Play Store</a><a href="https://apps.apple.com/kr/app/%EB%AA%A8%EB%A8%B9%EB%83%A5-sand-cat/id6757536148" target="_blank" rel="noreferrer">App Store</a></div>
+            <div class="app-head"><img class="app-icon app-icon-img" src="Assets/AppIcons/SandCatBlast.png" alt="모먹냥 아이콘"><div><div class="app-title">모먹냥 · Sand Cat Blast</div><div class="app-role">핵심 개발 및 기획</div></div></div>
+            <p>StageData, Board, Cell, Cat, Block, Gimmick 구조가 강하게 드러나는 프로젝트입니다. 이후 공통 구조로 발전시키기 좋은 기반이 되었습니다.</p>
+            <div class="store-links"><a href="https://play.google.com/store/apps/details?id=com.sand.cat.loop.blast.aos" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play Store</a><a href="https://apps.apple.com/kr/app/%EB%AA%A8%EB%A8%B9%EB%83%A5-sand-cat/id6757536148" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App Store</a></div>
           </article>
           <article class="project-feature">
-            <div class="app-head"><div class="app-icon yellow">B</div><div><div class="app-title">Block Candy Jam</div><div class="app-role">핵심 개발</div></div></div>
+            <div class="app-head"><img class="app-icon app-icon-img" src="Assets/AppIcons/BlockCandyJam.png" alt="블럭캔디잼 아이콘"><div><div class="app-title">Block Candy Jam</div><div class="app-role">핵심 개발</div></div></div>
             <p>블럭 형태의 후속작들이 이 게임의 컨셉과 코드를 기반으로 만들어졌습니다. 빠른 코어 구현과 확장 가능한 후속작 기반 코드가 장점입니다.</p>
-            <div class="store-links"><a href="https://play.google.com/store/apps/details?id=com.color.jelly.jam.puzzle&hl=ko" target="_blank" rel="noreferrer">Play Store</a><a href="https://apps.apple.com/kr/app/%EB%B8%94%EB%A1%9D-%EC%BA%94%EB%94%94-%EC%9E%BC/id6744118635" target="_blank" rel="noreferrer">App Store</a></div>
+            <div class="store-links"><a href="https://play.google.com/store/apps/details?id=com.color.jelly.jam.puzzle&hl=ko" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play Store</a><a href="https://apps.apple.com/kr/app/%EB%B8%94%EB%A1%9D-%EC%BA%94%EB%94%94-%EC%9E%BC/id6744118635" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App Store</a></div>
           </article>
           <article class="project-feature">
-            <div class="app-head"><div class="app-icon pink">우</div><div><div class="app-title">우드드득</div><div class="app-role">핵심 개발 및 기획</div></div></div>
+            <div class="app-head"><img class="app-icon app-icon-img" src="Assets/AppIcons/WoodBlock.png" alt="우드드득 아이콘"><div><div class="app-title">우드드득</div><div class="app-role">핵심 개발 및 기획</div></div></div>
             <p>이 게임의 성공을 통해 스테이지가 없는 미니게임류 게임 개발 전략이 세워졌습니다. 빠른 검증형 MVP의 사례로 보여주기 좋습니다.</p>
-            <div class="store-links"><a href="https://play.google.com/store/apps/details?id=com.stormborn.wood.block" target="_blank" rel="noreferrer">Play Store</a></div>
+            <div class="store-links"><a href="https://play.google.com/store/apps/details?id=com.stormborn.wood.block" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play Store</a></div>
           </article>
         </div>
       </div>
@@ -459,14 +486,14 @@
           <p class="section-lead">대표 프로젝트 외에도 다수의 코어 및 MVP 개발에 참여했습니다.</p>
         </div>
         <div class="project-grid">
-          <article class="mini-project"><h3>냥탈출</h3><p>코어 및 MVP 개발. 게임 핵심 플레이 및 기믹 기획.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.cat.away.jam.aos" target="_blank" rel="noreferrer">Play</a><a href="https://apps.apple.com/kr/app/cat-escape-%EA%B3%A0%EC%96%91%EC%9D%B4-%EB%B0%A9%ED%83%88%EC%B6%9C/id6753330488" target="_blank" rel="noreferrer">App</a></div></article>
-          <article class="mini-project"><h3>고양이 액체설</h3><p>코어 및 MVP 개발.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.cat.away.escape.aos" target="_blank" rel="noreferrer">Play</a><a href="https://apps.apple.com/kr/app/cat-away-%EA%B3%A0%EC%96%91%EC%9D%B4-%EC%95%A1%EC%B2%B4%EC%84%A4-%EB%A1%9C%EC%A7%81-%ED%8D%BC%EC%A6%90-%EA%B2%8C%EC%9E%84/id6755174303" target="_blank" rel="noreferrer">App</a></div></article>
-          <article class="mini-project"><h3>냥캡슐 아웃</h3><p>코어 및 MVP 개발.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.capsule.cat.aos" target="_blank" rel="noreferrer">Play</a><a href="https://apps.apple.com/us/app/catsule-out/id6759559942" target="_blank" rel="noreferrer">App</a></div></article>
-          <article class="mini-project"><h3>Knit Factory</h3><p>코어 및 MVP 개발. BeltBoard, BoxQueue, Knit 흐름 구조.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.actionfit.cat.factory" target="_blank" rel="noreferrer">Play</a><a href="https://apps.apple.com/kr/app/knit-factory-cute-puzzle-flow/id6756097866" target="_blank" rel="noreferrer">App</a></div></article>
-          <article class="mini-project"><h3>덕잼3D · 오리 꽥꽥 3D</h3><p>코어 및 MVP 개발.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.duck.jam" target="_blank" rel="noreferrer">Play</a><a href="https://apps.apple.com/kr/app/%EB%8D%95%EC%9E%BC3d/id6749844595" target="_blank" rel="noreferrer">App</a></div></article>
-          <article class="mini-project"><h3>Yarn Loop</h3><p>핵심 개발 및 기획. BlossomPackage 기반 프로젝트.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.yarn.loop.aos" target="_blank" rel="noreferrer">Play</a><a href="https://apps.apple.com/us/app/yarn-loop-wool-puzzle/id6761704577" target="_blank" rel="noreferrer">App</a></div></article>
-          <article class="mini-project"><h3>Duck Loop</h3><p>코어 및 MVP 개발. Rail / Slot / Duck 구조.</p><div class="mini-links"><a href="https://apps.apple.com/kr/app/duck-loop/id6779206823" target="_blank" rel="noreferrer">App</a></div></article>
-          <article class="mini-project"><h3>기타 20개 이상</h3><p>코어 / MVP 개발. 최소 인력으로 빠르게 검증 가능한 형태를 제작.</p><div class="mini-links"><a href="#contact">문의</a></div></article>
+          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/CatEscape.png" alt="냥탈출 아이콘"><h3>냥탈출</h3></div><p>코어 및 MVP 개발. 게임 핵심 플레이 및 기믹 기획.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.cat.away.jam.aos" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play</a><a href="https://apps.apple.com/kr/app/cat-escape-%EA%B3%A0%EC%96%91%EC%9D%B4-%EB%B0%A9%ED%83%88%EC%B6%9C/id6753330488" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
+          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/CatAway.png" alt="고양이 액체설 아이콘"><h3>고양이 액체설</h3></div><p>코어 및 MVP 개발.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.cat.away.escape.aos" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play</a><a href="https://apps.apple.com/kr/app/cat-away-%EA%B3%A0%EC%96%91%EC%9D%B4-%EC%95%A1%EC%B2%B4%EC%84%A4-%EB%A1%9C%EC%A7%81-%ED%8D%BC%EC%A6%90-%EA%B2%8C%EC%9E%84/id6755174303" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
+          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/CatCapsule.png" alt="냥캡슐 아웃 아이콘"><h3>냥캡슐 아웃</h3></div><p>코어 및 MVP 개발.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.capsule.cat.aos" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play</a><a href="https://apps.apple.com/us/app/catsule-out/id6759559942" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
+          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/KnitFactory.png" alt="Knit Factory 아이콘"><h3>Knit Factory</h3></div><p>코어 및 MVP 개발. BeltBoard, BoxQueue, Knit 흐름 구조.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.actionfit.cat.factory" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play</a><a href="https://apps.apple.com/kr/app/knit-factory-cute-puzzle-flow/id6756097866" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
+          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/DuckJam.png" alt="덕잼3D 아이콘"><h3>덕잼3D · 오리 꽥꽥 3D</h3></div><p>코어 및 MVP 개발.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.duck.jam" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play</a><a href="https://apps.apple.com/kr/app/%EB%8D%95%EC%9E%BC3d/id6749844595" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
+          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/YarnLoop.png" alt="Yarn Loop 아이콘"><h3>Yarn Loop</h3></div><p>핵심 개발 및 기획. BlossomPackage 기반 프로젝트.</p><div class="mini-links"><a href="https://play.google.com/store/apps/details?id=com.yarn.loop.aos" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/PlayStore.png" alt="">Play</a><a href="https://apps.apple.com/us/app/yarn-loop-wool-puzzle/id6761704577" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
+          <article class="mini-project"><div class="mini-head"><img class="mini-icon" src="Assets/AppIcons/DuckLoop.png" alt="Duck Loop 아이콘"><h3>Duck Loop</h3></div><p>코어 및 MVP 개발. Rail / Slot / Duck 구조.</p><div class="mini-links"><a href="https://apps.apple.com/kr/app/duck-loop/id6779206823" target="_blank" rel="noreferrer"><img class="store-icon" src="Assets/Icons/AppStore.png" alt="">App</a></div></article>
+          <article class="mini-project"><div class="mini-head"><h3>기타 20개 이상</h3></div><p>코어 / MVP 개발. 최소 인력으로 빠르게 검증 가능한 형태를 제작.</p></article>
         </div>
       </div>
     </section>
@@ -498,9 +525,9 @@
         <div class="eyebrow">Contact</div>
         <h2>빠르게 만들고, 쉽게 이어받을 수 있는 구조로 남기는 개발자입니다.</h2>
         <div class="contact-cards">
-          <a href="mailto:kyt2pik@gmail.com">kyt2pik@gmail.com</a>
-          <a href="https://github.com/Lovescream" target="_blank" rel="noreferrer">github.com/Lovescream</a>
-          <span>010-5121-6747</span>
+          <a href="mailto:kyt2pik@gmail.com"><img class="icon-inline" src="Assets/Icons/Mail.png" alt="">kyt2pik@gmail.com</a>
+          <a href="https://github.com/Lovescream" target="_blank" rel="noreferrer"><img class="icon-inline" src="Assets/Icons/Github.png" alt="">github.com/Lovescream</a>
+          <span><img class="icon-inline" src="Assets/Icons/Phone.png" alt="">010-5121-6747</span>
         </div>
       </div>
     </section>
@@ -521,70 +548,196 @@
   </div>
 
   <template id="code-dmv">
-    <div class="code-caption">Data는 저장/로드 값, Model은 런타임 로직, Object는 Unity 표현을 담당합니다. Cell은 자신의 하위 모델을 생성하고 다시 Data로 취합할 수 있습니다.</div>
-<pre><code class="language-csharp">public class Cell {
+    <div class="code-caption">Data는 저장/로드 값, Model은 런타임 로직, Object는 Unity 표현을 담당합니다. CellData, Cell, CellObject를 나누어 보면 역할 분리가 가장 명확하게 보입니다.</div>
+    <div class="code-tabs"><button class="code-tab active" type="button" data-pane="code-dmv-0">CellData</button><button class="code-tab" type="button" data-pane="code-dmv-1">Cell</button><button class="code-tab" type="button" data-pane="code-dmv-2">CellObject</button></div>
+    <div class="code-pane active" id="code-dmv-0"><pre><code class="language-csharp">public class CellData {
+    public Vector2Int Index { get; set; }
+    public CatData Cat { get; set; }
+    public BlockData Block { get; set; }
+}</code></pre></div><div class="code-pane" id="code-dmv-1"><pre><code class="language-csharp">public class Cell {
     public Board Board { get; }
     public Vector2Int Index { get; private set; }
-    public Yarn Yarn { get; set; }
-    public Block Block { get; set; }
+    public Vector2 Position { get; private set; }
+
     public CellObject Object { get; private set; }
+    public Cat Cat { get; set; }
+    public Block Block { get; set; }
 
-    public Cell(Board board, CellData data) {
-        Board = board;
-        Index = data.Index;
-        Position = new Vector3(Index.x, 0, -Index.y);
+    public bool IsEmpty {
+        get {
+            if (Cat != null || Block != null) return false;
+            if (!IsEmptyTargetedCave()) return false;
+            if (_targetedPins.Count &gt; 0) return false;
+            return true;
+        }
+    }
 
-        if (data.Yarn != null) Yarn = new(this, data.Yarn);
+    public Cell(Board board, CellData data) : this(board, data.Index) {
+        if (data.Cat != null) Cat = new(this, data.Cat);
         if (data.Block != null) GenerateBlock(data.Block);
     }
 
+    public void GenerateBlock(BlockData data) {
+        Block = data.Type switch {
+            BlockType.Cave =&gt; new BlockCave(this, data),
+            BlockType.Pin =&gt; new BlockPin(this, data),
+            BlockType.Key =&gt; new BlockKey(this, data),
+            BlockType.Lock =&gt; new BlockLock(this, data),
+            BlockType.Basket =&gt; new BlockBasket(this, data),
+            _ =&gt; null
+        };
+    }
+
     public void GenerateObject() {
-        Object = Entities.Spawn&lt;CellObject&gt;();
+        Object = Main.Object.Instantiate&lt;CellObject&gt;();
         Object.Set(this);
-        Yarn?.GenerateObject();
+        Cat?.GenerateObject();
         Block?.GenerateObject();
     }
 
     public CellData GetData() {
-        return new CellData {
+        return new() {
             Index = Index,
-            Yarn = Yarn?.GetData(),
-            Block = Block?.GetData()
+            Cat = Cat?.GetData(),
+            Block = Block?.GetData(),
         };
     }
-}</code></pre>
+}</code></pre></div><div class="code-pane" id="code-dmv-2"><pre><code class="language-csharp">public class CellObject : Entity {
+    private Cell _cell;
+    private SpriteRenderer _spriter;
+
+    public override bool Initialize() {
+        if (!base.Initialize()) return false;
+        _spriter = this.gameObject.FindChild&lt;SpriteRenderer&gt;(&quot;Floor_Sit&quot;);
+        return true;
+    }
+    
+    public void Set(Cell cell) {
+        Initialize();
+        _cell = cell;
+
+        this.transform.name = $&quot;{cell}&quot;;
+        this.transform.SetParent(_cell.Board.Object.Cells);
+        this.transform.position = _cell.Position;
+        this.transform.localRotation = Quaternion.identity;
+        this.transform.localScale = Vector3.one;
+    }
+
+    public void Reposition() {
+        this.transform.position = _cell.Position;
+    }
+}</code></pre></div>
   </template>
 
   <template id="code-board">
-    <div class="code-caption">Board가 스테이지의 루트가 되고, Cell과 보조 모델을 먼저 만든 뒤 Object 생성 시점에 상위에서 하위로 생성 명령을 전달합니다.</div>
-<pre><code class="language-csharp">public class Board {
+    <div class="code-caption">Board가 Cell을 만들고, Cell이 자신 위의 Cat/Block 모델을 생성합니다. 이후 GenerateObject 흐름에서 상위 Object부터 하위 Object까지 순서대로 생성됩니다.</div>
+    <div class="code-tabs"><button class="code-tab active" type="button" data-pane="code-board-0">Board</button><button class="code-tab" type="button" data-pane="code-board-1">Cell</button><button class="code-tab" type="button" data-pane="code-board-2">Block</button></div>
+    <div class="code-pane active" id="code-board-0"><pre><code class="language-csharp">public class Board {
+    public static readonly Vector2 CellSize = Vector2.one;
+
     private readonly Dictionary&lt;Vector2Int, Cell&gt; _cells = new();
     private readonly Dictionary&lt;Vector2Int, Wall&gt; _walls = new();
+    private readonly List&lt;CatBox&gt; _catBoxes = new();
+    private readonly List&lt;Curtain&gt; _curtains = new();
+
+    public IReadOnlyList&lt;Cell&gt; Cells =&gt; _cells.Values.ToList();
+    public Cell this[int x, int y] =&gt; _cells.GetValueOrDefault(new(x, y));
+    public Cell this[Vector2Int index] =&gt; _cells.GetValueOrDefault(index);
 
     public Board(StageData stageData) {
+        int minX = int.MaxValue;
+        int maxX = int.MinValue;
+        int minY = int.MaxValue;
+        int maxY = int.MinValue;
+        
+        // 데이터가 존재하는 셀 생성.
         foreach (CellData cellData in stageData.Cells) {
             Vector2Int index = cellData.Index;
-            _cells[index] = new Cell(this, cellData);
+            _cells[index] = new(this, cellData);
+            if (minX &gt; index.x) minX = index.x;
+            if (maxX &lt; index.x) maxX = index.x;
+            if (minY &gt; index.y) minY = index.y;
+            if (maxY &lt; index.y) maxY = index.y;
         }
 
-        RecalculateSize();
+        Min = new(minX, minY);
+        Max = new(maxX, maxY);
+        Size = new(maxX - minX + 1, maxY - minY + 1);
+        Center = (Min + Max) * CellSize * 0.5f;
+
         GenerateWalls();
-        GenerateSlotBoard();
+        GenerateSandGrid(stageData.PixelArtData);
+        GenerateRail();
     }
 
     public void GenerateObject() {
-        Object = Entities.Spawn&lt;BoardObject&gt;();
+        Object = Main.Object.Instantiate&lt;BoardObject&gt;();
         Object.Set(this);
-
-        foreach (Cell cell in _cells.Values)
-            cell.GenerateObject();
-
-        foreach (Wall wall in _walls.Values)
-            wall.GenerateObject();
-
-        SlotBoard?.GenerateObject();
+        foreach (Cell cell in _cells.Values) cell.GenerateObject();
+        foreach (Wall wall in _walls.Values) wall.GenerateObject();
+        SandGrid?.GenerateObject();
+        Rail?.GenerateObject();
     }
-}</code></pre>
+}</code></pre></div><div class="code-pane" id="code-board-1"><pre><code class="language-csharp">public Cell(Board board, CellData data) : this(board, data.Index) {
+    // Cell은 자신 위에 올라갈 하위 모델을 데이터 기반으로 직접 생성한다.
+    if (data.Cat != null) Cat = new(this, data.Cat);
+    if (data.Block != null) GenerateBlock(data.Block);
+}
+
+public void GenerateBlock(BlockData data) {
+    Block = data.Type switch {
+        BlockType.None =&gt; new EditorBlock(this, data),
+        BlockType.Cave =&gt; new BlockCave(this, data),
+        BlockType.Pin =&gt; new BlockPin(this, data),
+        BlockType.Key =&gt; new BlockKey(this, data),
+        BlockType.Lock =&gt; new BlockLock(this, data),
+        BlockType.Basket =&gt; new BlockBasket(this, data),
+        _ =&gt; null
+    };
+}
+
+public void GenerateObject() {
+    Object = Main.Object.Instantiate&lt;CellObject&gt;();
+    Object.Set(this);
+
+    // Cell 하위 모델의 View 생성까지 이어서 호출한다.
+    Cat?.GenerateObject();
+    Block?.GenerateObject();
+}</code></pre></div><div class="code-pane" id="code-board-2"><pre><code class="language-csharp">public abstract class Block : IBlock {
+    public Board Board { get; }
+    public BlockType Type { get; }
+    public BlockObject BlockObject { get; protected set; }
+
+    public Cell Cell {
+        get =&gt; _cell;
+        set {
+            if (_cell == value) return;
+            if (_cell != null &amp;&amp; _cell.Block == this) _cell.Block = null;
+            _cell = value;
+            if (_cell != null) {
+                _cell.Block = this;
+                BlockObject?.transform.SetParent(_cell.Object.transform);
+            }
+            else {
+                BlockObject?.transform.SetParent(null);
+            }
+        }
+    }
+
+    protected Block(Cell cell, BlockData data) {
+        Cell = cell;
+        Board = Cell.Board;
+        Type = data.Type;
+    }
+
+    public abstract void GenerateObject();
+    public abstract BlockData GetData();
+
+    public virtual void Destroy() {
+        Main.Board.Remove(this);
+        BlockObject?.Destroy();
+    }
+}</code></pre></div>
   </template>
 
   <template id="code-event">
@@ -658,79 +811,271 @@ public class Duck {
   </template>
 
   <template id="code-gimmick">
-    <div class="code-caption">기믹은 본체의 bool 필드가 아니라 독립 객체로 분리됩니다. 본체는 목록과 조회/추가/제거만 담당하고, 각 기믹은 자기 데이터와 View를 가집니다.</div>
-<pre><code class="language-csharp">public interface IYarnGimmick {
-    Yarn Yarn { get; }
-    YarnGimmickType Type { get; }
-    YarnGimmickObject GimmickObject { get; }
-    YarnGimmickData GetData();
+    <div class="code-caption">기믹은 본체의 bool 필드가 아니라 독립 객체로 분리됩니다. Owner는 목록과 조회/추가/제거만 담당하고, 각 기믹은 Data, Model, Object를 통해 저장·로직·표현을 독립적으로 처리합니다.</div>
+    <div class="code-tabs"><button class="code-tab active" type="button" data-pane="code-gimmick-0">Owner</button><button class="code-tab" type="button" data-pane="code-gimmick-1">Data / Factory</button><button class="code-tab" type="button" data-pane="code-gimmick-2">Interface / Base</button><button class="code-tab" type="button" data-pane="code-gimmick-3">GimmickObject</button><button class="code-tab" type="button" data-pane="code-gimmick-4">Concrete</button><button class="code-tab" type="button" data-pane="code-gimmick-5">Usage</button></div>
+    <div class="code-pane active" id="code-gimmick-0"><pre><code class="language-csharp">public class Cat {
+    private readonly List&lt;ICatGimmick&gt; _gimmicks = new();
+
+    public IReadOnlyList&lt;ICatGimmick&gt; Gimmicks =&gt; _gimmicks;
+
+    public void AddGimmick(ICatGimmick gimmick) {
+        if (gimmick == null) return;
+        if (_gimmicks.Contains(gimmick)) return;
+
+        _gimmicks.Add(gimmick);
+        gimmick.GenerateObject();
+    }
+
+    public void RemoveGimmick(ICatGimmick gimmick) {
+        if (gimmick == null) return;
+        if (!_gimmicks.Remove(gimmick)) return;
+
+        gimmick.OnRemoved();
+    }
+
+    public bool Has(CatGimmickType type)
+        =&gt; _gimmicks.Any(g =&gt; g.Type == type);
+
+    public bool TryGet&lt;T&gt;(out T gimmick) where T : class, ICatGimmick {
+        gimmick = _gimmicks.OfType&lt;T&gt;().FirstOrDefault();
+        return gimmick != null;
+    }
+
+    public CatData GetData() {
+        return new CatData {
+            Color = Color,
+            Gimmicks = _gimmicks.Select(g =&gt; g.GetData()).ToList()
+        };
+    }
+}</code></pre></div><div class="code-pane" id="code-gimmick-1"><pre><code class="language-csharp">public class Cat {
+    private void SetGimmicks(IEnumerable&lt;CatGimmickData&gt; datas) {
+        _gimmicks.Clear();
+        if (datas == null) return;
+
+        foreach (CatGimmickData data in datas) {
+            ICatGimmick gimmick = data.Type switch {
+                CatGimmickType.Hidden =&gt; new CatHidden(this, data),
+                CatGimmickType.Frozen =&gt; new CatFrozen(this, data),
+                CatGimmickType.Switch =&gt; new CatSwitch(this, data),
+                _ =&gt; null
+            };
+
+            AddGimmick(gimmick);
+        }
+    }
+}
+
+public class CatGimmickData {
+    public CatGimmickType Type { get; set; }
+    public ColorType Color { get; set; }
+    public int Count { get; set; }
+    public Vector2Int TargetIndex { get; set; }
+}</code></pre></div><div class="code-pane" id="code-gimmick-2"><pre><code class="language-csharp">public interface ICatGimmick {
+    Cat Cat { get; }
+    CatGimmickType Type { get; }
+    CatGimmickObject GimmickObject { get; }
+
+    CatGimmickData GetData();
     void GenerateObject();
     void OnRemoved();
 }
 
-public abstract class YarnGimmickBase : IYarnGimmick {
-    public Yarn Yarn { get; }
-    public abstract YarnGimmickType Type { get; }
-    public YarnGimmickObject GimmickObject { get; protected set; }
+public abstract class CatGimmickBase : ICatGimmick {
+    public Cat Cat { get; }
+    public CatGimmickObject GimmickObject { get; protected set; }
+    public abstract CatGimmickType Type { get; }
 
-    protected YarnGimmickBase(Yarn yarn) {
-        Yarn = yarn;
+    public event Action&lt;CatGimmickBase&gt; OnGimmickRemoved;
+
+    protected CatGimmickBase(Cat cat) {
+        Cat = cat;
     }
 
-    public abstract YarnGimmickData GetData();
+    public abstract CatGimmickData GetData();
     public abstract void GenerateObject();
 
     public virtual void OnRemoved() {
+        OnGimmickRemoved?.Invoke(this);
         GimmickObject?.Destroy();
     }
-}
+}</code></pre></div><div class="code-pane" id="code-gimmick-3"><pre><code class="language-csharp">public abstract class CatGimmickObject&lt;T&gt; : CatGimmickObject
+    where T : ICatGimmick {
 
-public class Yarn {
-    private readonly List&lt;IYarnGimmick&gt; _gimmicks = new();
+    public T Gimmick { get; private set; }
+    public Cat Cat =&gt; Gimmick?.Cat;
+    protected Transform _view;
 
-    public bool Has(YarnGimmickType type)
-        =&gt; _gimmicks.Any(g =&gt; g.Type == type);
-
-    public bool TryGet&lt;T&gt;(out T gimmick) where T : class, IYarnGimmick {
-        gimmick = _gimmicks.OfType&lt;T&gt;().FirstOrDefault();
-        return gimmick != null;
-    }
-}</code></pre>
-  </template>
-
-  <template id="code-blossom-entity">
-    <div class="code-caption">BlossomPackage / NyoPack은 반복되는 Entity 생성, Pool 반환, Resource 캐싱을 공통화하기 위한 기반입니다.</div>
-<pre><code class="language-csharp">public abstract class Entity : MonoBehaviour {
-    internal string PoolKey { get; private set; }
-    private bool _initialized;
-
-    public bool Initialize() {
-        if (_initialized) return false;
-        OnInitialize();
-        _initialized = true;
+    public override bool Initialize() {
+        if (!base.Initialize()) return false;
+        _view = this.gameObject.FindChild&lt;Transform&gt;(&quot;View&quot;);
         return true;
     }
 
-    protected virtual void OnInitialize() { }
-    public virtual void OnSpawned() { }
-    public virtual void OnRelease() { }
+    public virtual void Set(T gimmick) {
+        Initialize();
+        Gimmick = gimmick;
+        this.transform.SetParent(Cat.Object.transform);
+        this.transform.localPosition = Vector3.zero;
+        Show(true);
+    }
+
+    public override void Show(bool show) {
+        _view?.gameObject.SetActive(show);
+    }
+
+    public override void Destroy() {
+        Main.Object.Destroy(this);
+    }
+}</code></pre></div><div class="code-pane" id="code-gimmick-4"><pre><code class="language-csharp">public class CatHidden : CatGimmickBase {
+    public override CatGimmickType Type =&gt; CatGimmickType.Hidden;
+
+    public CatHidden(Cat cat, CatGimmickData data) : base(cat) { }
+
+    public override CatGimmickData GetData() =&gt; new() {
+        Type = Type
+    };
+
+    public override void GenerateObject() {
+        GimmickObject = Main.Object.Instantiate&lt;CatHiddenObject&gt;();
+        ((CatHiddenObject)GimmickObject).Set(this);
+    }
 }
 
-public static class Entities {
-    public static T Spawn&lt;T&gt;(string key = null, Transform parent = null)
-        where T : Entity =&gt; EntityManager.Spawn&lt;T&gt;(key, parent);
+public class CatFrozen : CatGimmickBase {
+    public override CatGimmickType Type =&gt; CatGimmickType.Frozen;
+    public int Count { get; private set; }
 
-    public static void Despawn&lt;T&gt;(T entity) where T : Entity
-        =&gt; EntityManager.Despawn(entity);
+    public CatFrozen(Cat cat, CatGimmickData data) : base(cat) {
+        Count = data.Count;
+    }
+
+    public void Decrease() {
+        Count--;
+        if (Count &lt;= 0)
+            Cat.RemoveGimmick(this);
+    }
+
+    public override CatGimmickData GetData() =&gt; new() {
+        Type = Type,
+        Count = Count
+    };
+
+    public override void GenerateObject() {
+        GimmickObject = Main.Object.Instantiate&lt;CatFrozenObject&gt;();
+        ((CatFrozenObject)GimmickObject).Set(this);
+    }
+}</code></pre></div><div class="code-pane" id="code-gimmick-5"><pre><code class="language-csharp">// 특정 규칙이 필요한 곳에서 본체의 bool 필드를 직접 보지 않는다.
+// Has / TryGet으로 필요한 기믹만 확인한다.
+if (cat.Has(CatGimmickType.Hidden)) {
+    return; // 아직 보이면 안 되는 고양이
 }
 
-public static class Res {
-    public static void Load&lt;T&gt;(string path) where T : Object
-        =&gt; ResourceManager.Load&lt;T&gt;(path, ResourceKeyPolicy.Name, null);
+if (cat.TryGet(out CatFrozen frozen)) {
+    frozen.Decrease();
+    return; // 얼어 있으면 이동하지 않음
+}
 
-    public static T Get&lt;T&gt;(string key) where T : Object
-        =&gt; ResourceManager.Get&lt;T&gt;(key);
-}</code></pre>
+// 새 기믹 추가 시 본체에는 List/조회 메서드만 유지하고,
+// 신규 CatGimmickBase 파생 클래스 + Object + Data 생성 로직만 추가한다.</code></pre></div>
+  </template>
+
+  <template id="code-blossom-entity">
+    <div class="code-caption">BlossomPackage / NyoPack은 반복되는 Unity 기반 기능을 작고 명확한 패키지로 나눈 구조입니다. Core, Persistence, Analytics, Monetization, Presentation, PackageManager의 진입점을 예시로 보여줍니다.</div>
+    <div class="code-tabs"><button class="code-tab active" type="button" data-pane="code-blossom-entity-0">Core</button><button class="code-tab" type="button" data-pane="code-blossom-entity-1">Akiv</button><button class="code-tab" type="button" data-pane="code-blossom-entity-2">Analytics</button><button class="code-tab" type="button" data-pane="code-blossom-entity-3">Ads / IAP</button><button class="code-tab" type="button" data-pane="code-blossom-entity-4">Presentation</button><button class="code-tab" type="button" data-pane="code-blossom-entity-5">PackageManager</button></div>
+    <div class="code-pane active" id="code-blossom-entity-0"><pre><code class="language-csharp">public static class Initializer {
+    public static void InitializeCore() {
+        Res.Initialize();
+
+        PrefabProvider prefabProvider = new();
+        ObjectSpawner objectSpawner = new();
+
+        Entities.Initialize(prefabProvider, objectSpawner);
+        UI.Initialize(prefabProvider, objectSpawner);
+    }
+
+    private sealed class PrefabProvider : IPrefabProvider, IUISpawnerProvider {
+        public GameObject Provide(string key) {
+            return Res.TryGet(key, out GameObject prefab)
+                ? prefab
+                : Resources.Load&lt;GameObject&gt;(key);
+        }
+    }
+}
+
+PlayerEntity player = Entities.Spawn&lt;PlayerEntity&gt;(&quot;Player&quot;);
+Sprite icon = Res.Get&lt;Sprite&gt;(&quot;Icon_Gold&quot;);
+UI.OpenPanel&lt;UI_Panel_Inventory&gt;();</code></pre></div><div class="code-pane" id="code-blossom-entity-1"><pre><code class="language-csharp">[Akiv(&quot;Player&quot;, useEncryption: true)]
+public class PlayerData : AkivData {
+    public AkivValue&lt;int&gt; Gold = new();
+    public AkivList&lt;string&gt; UnlockedCharacters = new();
+
+    public override void Clear() {
+        Gold.Value = 0;
+        UnlockedCharacters.Clear();
+    }
+}
+
+Akiv.Initialize();
+PlayerData data = Akiv.Get&lt;PlayerData&gt;();
+data.Gold.Value += 100;          // 값 변경 감지
+data.UnlockedCharacters.Add(&quot;Witch&quot;);
+Akiv.SaveAll();</code></pre></div><div class="code-pane" id="code-blossom-entity-2"><pre><code class="language-csharp">Analytics.Initialize();
+
+Analytics.LogEvent(
+    new AnalyticsEventData.Builder(&quot;stage_start&quot;)
+        .SetParamName(&quot;stage_id&quot;)
+        .SetParamValue(&quot;1&quot;)
+        .AddAttribute(&quot;difficulty&quot;, &quot;normal&quot;)
+        .Build()
+);
+
+// 특정 서비스에만 전송할 수도 있다.
+Analytics.LogEvent(
+    new AnalyticsEventData(&quot;tutorial_complete&quot;),
+    &quot;Firebase&quot;
+);</code></pre></div><div class="code-pane" id="code-blossom-entity-3"><pre><code class="language-csharp">AdsAnalytics.Register();
+Ads.Initialize();
+
+if (Ads.IsLoaded(AdType.Rewarded)) {
+    Ads.ShowAd(AdType.Rewarded, success =&gt; {
+        if (success) {
+            // 보상 지급
+        }
+    });
+}
+
+IAPAnalytics.Register();
+IAP.Initialize(storage, googleTangle, appleTangle);
+IAP.Purchase(&quot;remove_ads&quot;);</code></pre></div><div class="code-pane" id="code-blossom-entity-4"><pre><code class="language-csharp">Receive.Initialize(
+    rewardHandler: new ReceiveRewardHandler(Akiv.Get&lt;CurrencyAkiv&gt;()),
+    targetResolver: null,
+    spawner: new ReceiveSpawner(),
+    iconProvider: new ReceiveIconProvider(),
+    amountSplitter: new ReceiveAmountSplitter(),
+    amountTextFormatter: new ReceiveAmountTextFormatter()
+);
+
+Receive.ApplyAndPlay(
+    new ReceiveRequest(
+        key: new ReceiveKey(&quot;Currency&quot;, &quot;Gold&quot;),
+        amount: 25,
+        startPosition: transform.position,
+        space: ReceiveSpace.World
+    )
+);
+
+Haptic.Play(HapticType.Success);</code></pre></div><div class="code-pane" id="code-blossom-entity-5"><pre><code class="language-csharp">// Blossom Package Manager의 역할
+// 1. 원격/로컬 fallback 카탈로그 로드
+// 2. 설치된 패키지와 버전 비교
+// 3. 필수/선택 의존성 확인
+// 4. UPM, Git, Scoped Registry, Manual 의존성 처리
+// 5. 설치/제거 후 Define Symbol 적용
+
+// 사용 흐름
+// Unity Menu: Blossom / Package Manager
+// → Install Required Packages
+// → 필요한 패키지 개별 설치
+// → 의존성 / Define Symbol 자동 처리</code></pre></div>
   </template>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -741,6 +1086,20 @@ public static class Res {
     const modalTitle = document.getElementById('modalTitle');
     const closeBtn = document.getElementById('modalClose');
 
+    function initCodeTabs() {
+      const tabs = modalBody.querySelectorAll('.code-tab');
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const targetId = tab.dataset.pane;
+          modalBody.querySelectorAll('.code-tab').forEach((t) => t.classList.remove('active'));
+          modalBody.querySelectorAll('.code-pane').forEach((p) => p.classList.remove('active'));
+          tab.classList.add('active');
+          const pane = modalBody.querySelector('#' + CSS.escape(targetId));
+          if (pane) pane.classList.add('active');
+        });
+      });
+    }
+
     function openCode(id, label) {
       const tpl = document.getElementById(id);
       if (!tpl) return;
@@ -748,6 +1107,7 @@ public static class Res {
       modalBody.innerHTML = tpl.innerHTML;
       modal.classList.add('open');
       modal.setAttribute('aria-hidden', 'false');
+      initCodeTabs();
       modalBody.querySelectorAll('pre code').forEach((el) => hljs.highlightElement(el));
     }
 
