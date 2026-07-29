@@ -82,7 +82,7 @@
     }
     .contact-line span, .contact-line a { display:inline-flex; align-items:center; gap:6px; }
     .profile-card { position:relative; z-index:1; display:flex; align-items:center; gap:15px; padding:16px; border-radius:20px; background:rgba(13,16,32,.55); border:1px solid var(--line); margin-bottom:16px; }
-    .profile-avatar { width:64px; height:64px; border-radius:20px; object-fit:cover; border:1px solid rgba(255,255,255,.2); }
+    .profile-avatar { width:104px; height:132px; border-radius:18px; object-fit:cover; object-position:center top; border:1px solid rgba(255,255,255,.2); }
     .profile-card b { color:var(--ink); display:block; font-size:18px; }
     .profile-card span { color:var(--muted); font-family:var(--mono); font-size:12px; }
     .nav-links { display:flex; gap: 18px; flex-wrap: wrap; font-size: 14px; color: var(--muted); }
@@ -220,6 +220,90 @@
     .mini-links { display:flex; gap: 8px; margin-top: 14px; flex-wrap:wrap; }
     .mini-links a { font-size: 12px; color: var(--accent); font-family:var(--mono); display:inline-flex; align-items:center; gap:5px; }
 
+    .video-category-list {
+      display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;
+      margin-bottom: 24px;
+    }
+    .video-category {
+      appearance:none; width:100%; padding: 17px 18px; border-radius: 18px;
+      border:1px solid var(--line); background: rgba(255,255,255,.055);
+      color:var(--text); text-align:left; font:inherit; font-weight:800; cursor:pointer;
+      transition: border-color .15s ease, background .15s ease, transform .15s ease;
+    }
+    .video-category:hover { transform:translateY(-2px); border-color:rgba(139,233,214,.5); }
+    .video-category[aria-selected="true"] {
+      color:#071119; border-color:transparent;
+      background:linear-gradient(135deg, var(--accent), #c8fff4);
+    }
+    .video-gallery-head {
+      display:flex; align-items:flex-start; justify-content:space-between; gap:18px; margin-bottom:16px;
+    }
+    .video-gallery-head h3 { color:var(--ink); font-size:22px; letter-spacing:-.025em; }
+    .video-gallery-description { margin-top:5px; color:var(--muted); font-size:14px; }
+    .video-count { color:var(--accent); font-family:var(--mono); font-size:12px; font-weight:800; }
+    .video-grid {
+      display:flex; gap:12px; overflow-x:auto; padding:2px 2px 14px;
+      scroll-snap-type:x proximity; scrollbar-width:thin;
+      scrollbar-color:rgba(139,233,214,.55) rgba(255,255,255,.06);
+    }
+    .video-grid::-webkit-scrollbar { height:8px; }
+    .video-grid::-webkit-scrollbar-track { border-radius:999px; background:rgba(255,255,255,.06); }
+    .video-grid::-webkit-scrollbar-thumb { border-radius:999px; background:rgba(139,233,214,.55); }
+    .video-card {
+      appearance:none; flex:0 0 150px; min-width:0; padding:0; overflow:hidden; border-radius:17px;
+      border:1px solid var(--line); background:rgba(255,255,255,.055);
+      color:var(--ink); text-align:left; font:inherit; cursor:pointer;
+      scroll-snap-align:start;
+      transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .video-card:hover {
+      transform:translateY(-4px); border-color:rgba(139,233,214,.55);
+      box-shadow:0 18px 45px rgba(0,0,0,.24);
+    }
+    .video-thumb { position:relative; display:block; aspect-ratio:3/4; overflow:hidden; background:#080b14; }
+    .video-thumb img { display:block; width:100%; height:100%; object-fit:cover; }
+    .video-play-mark {
+      position:absolute; left:50%; top:50%; width:48px; height:48px;
+      display:grid; place-items:center; transform:translate(-50%,-50%);
+      border-radius:50%; border:1px solid rgba(255,255,255,.42);
+      color:#071119; background:rgba(139,233,214,.92); font-size:18px;
+      box-shadow:0 10px 28px rgba(0,0,0,.35);
+    }
+    .video-card-title { display:block; min-height:58px; padding:10px 11px; font-size:13px; font-weight:800; line-height:1.45; }
+    .video-modal {
+      position:fixed; inset:0; z-index:80; display:none; align-items:center; justify-content:center;
+      padding:24px; background:rgba(2,4,12,.88); backdrop-filter:blur(12px);
+    }
+    .video-modal.open { display:flex; }
+    body.video-modal-open { overflow:hidden; }
+    .video-dialog { position:relative; width:min(760px, 96vw); }
+    .video-close {
+      position:absolute; z-index:2; right:-8px; top:-8px; width:44px; height:44px;
+      border-radius:50%; border:1px solid rgba(255,255,255,.18);
+      color:var(--ink); background:#171b31; font-size:26px; line-height:1; cursor:pointer;
+    }
+    .video-stage { display:grid; grid-template-columns:52px minmax(0, 1fr) 52px; gap:14px; align-items:center; }
+    .video-nav {
+      width:52px; height:64px; border-radius:18px; border:1px solid rgba(255,255,255,.18);
+      color:var(--ink); background:rgba(255,255,255,.08); font-size:34px; cursor:pointer;
+    }
+    .video-nav:hover:not(:disabled) { color:var(--accent); border-color:rgba(139,233,214,.55); }
+    .video-nav:disabled { opacity:.25; cursor:not-allowed; }
+    .video-player-shell {
+      overflow:hidden; border-radius:24px; border:1px solid rgba(255,255,255,.16);
+      background:#080b14; box-shadow:0 28px 90px rgba(0,0,0,.5);
+    }
+    .video-player-shell video {
+      display:block; width:100%; max-height:76vh; aspect-ratio:9/16;
+      object-fit:contain; background:#000;
+    }
+    .video-player-meta {
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+      padding:14px 16px; background:#11162a;
+    }
+    .video-player-title { color:var(--ink); font-size:15px; font-weight:800; }
+    .video-player-counter { flex:0 0 auto; color:var(--accent); font-family:var(--mono); font-size:12px; }
+
     .work-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
     .work-card { padding: 20px; border-radius: 20px; border: 1px solid var(--line); background: rgba(255,255,255,.055); }
     .work-card h3 { color: var(--ink); font-size: 17px; margin-bottom: 8px; }
@@ -260,31 +344,31 @@
     @media (max-width: 980px) {
       .hero-grid, .strength, .system-layout, .framework { grid-template-columns: 1fr; }
       .grid3, .grid4, .project-grid, .work-grid, .contribution-grid { grid-template-columns: repeat(2, 1fr); }
-  
-
-    .contribution-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .contribution-card { min-height: 210px; }
-    .contribution-card .tag { font-family: var(--mono); color: var(--accent); font-size: 11px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; display:block; }
-    .project-meta { position: relative; z-index: 1; display:grid; gap: 8px; margin: 16px 0 2px; }
-    .project-meta div { border:1px solid var(--line); border-radius: 14px; padding: 10px 12px; background: rgba(13,16,32,.38); color: var(--text); font-size: 13px; line-height: 1.5; }
-    .project-meta b { display:block; color: var(--accent); font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
-    .download-badge { display:inline-flex; align-items:center; gap:6px; margin-top: 10px; padding: 7px 10px; border-radius: 999px; background: rgba(139,233,214,.1); border:1px solid rgba(139,233,214,.25); color: var(--accent); font-family: var(--mono); font-size: 12px; font-weight: 800; }
-    .mini-meta { display:grid; gap: 6px; margin: 10px 0 0; color: var(--muted); font-size: 12.5px; line-height: 1.45; }
-    .mini-meta span { display:block; }
-    .mini-meta b { color: var(--accent); font-family: var(--mono); font-size: 10px; letter-spacing: .05em; text-transform: uppercase; margin-right: 4px; }
-
-    .featured-grid { grid-template-columns: 1fr; }
+      .featured-grid { grid-template-columns: 1fr; }
       .system-index { position:relative; top:auto; grid-template-columns: repeat(2, 1fr); }
+      .video-card { flex-basis:144px; }
+      .nav-links { display:none; }
     }
     @media (max-width: 620px) {
       .wrap { width: min(100% - 24px, 1140px); }
-      .nav-links { display:none; }
       .hero { padding-top: 54px; }
       .metric-grid, .grid2, .grid3, .grid4, .project-grid, .work-grid, .module-grid, .contribution-grid { grid-template-columns: 1fr; }
       .section-head { display:block; }
       .section-lead { margin-top: 12px; }
       .system-index { grid-template-columns: 1fr; }
       .modal { padding: 12px; }
+      .video-category-list { grid-template-columns:1fr; }
+      .video-gallery-head { display:block; }
+      .video-count { display:block; margin-top:5px; }
+      .video-grid { gap:9px; }
+      .video-card { flex-basis:132px; }
+      .video-card-title { min-height:56px; padding:9px 10px; font-size:12px; }
+      .video-modal { padding:10px; }
+      .video-stage { grid-template-columns:38px minmax(0, 1fr) 38px; gap:7px; }
+      .video-nav { width:38px; height:54px; border-radius:14px; font-size:26px; }
+      .video-close { right:2px; top:-10px; }
+      .video-player-meta { display:block; padding:12px 14px; }
+      .video-player-counter { display:block; margin-top:4px; }
     }
   </style>
 </head>
@@ -292,7 +376,7 @@
 <nav class="nav">
 <div class="wrap nav-inner">
 <a class="brand" href="#top"><span class="brand-mark"><img alt="김세진 프로필" src="Assets/Icons/Profile.png"/></span><span>김세진 Portfolio</span></a>
-<div class="nav-links"><a href="#philosophy">철학</a><a href="#responsibilities">담당 업무</a><a href="#contribution">기여</a><a href="#featured">대표 프로젝트</a><a href="#released">참여 프로젝트</a><a href="#systems">게임 시스템</a><a href="#framework">패키지</a><a href="#contact">연락처</a></div>
+<div class="nav-links"><a href="#philosophy">철학</a><a href="#responsibilities">담당 업무</a><a href="#contribution">기여</a><a href="#featured">대표 프로젝트</a><a href="#released">참여 프로젝트</a><a href="#work-videos">작업 영상</a><a href="#systems">게임 시스템</a><a href="#framework">패키지</a><a href="#contact">연락처</a></div>
 </div>
 </nav>
 <main id="top">
@@ -315,7 +399,7 @@
 </div>
 </div>
 <aside aria-label="핵심 수치" class="hero-panel">
-<div class="profile-card"><img alt="김세진 프로필 아이콘" class="profile-avatar" src="Assets/Icons/Profile.png"/><div><b>김세진</b><span>Unity Client Developer</span></div></div>
+<div class="profile-card"><img alt="김세진 증명사진" class="profile-avatar" src="Assets/Profile/kim-sejin-id-photo.jpg"/><div><b>김세진</b><span>Unity Client Developer</span></div></div>
 <div class="metric-grid">
 <div class="metric"><div class="num">20+</div><div class="label">코어 / MVP 개발</div></div>
 <div class="metric"><div class="num">3~4</div><div class="label">월간 MVP 제작 경험</div></div>
@@ -461,6 +545,27 @@
 </div>
 </div>
 </section>
+<section id="work-videos">
+<div class="wrap">
+<div class="section-head">
+<div>
+<div class="eyebrow">Gameplay Works</div>
+<h2 class="section-title">작업물 영상</h2>
+</div>
+</div>
+<div aria-label="작업물 영상 목록" class="video-category-list" id="videoCategoryList" role="tablist"></div>
+<div aria-live="polite" class="video-gallery">
+<div class="video-gallery-head">
+<div>
+<h3 id="videoGalleryTitle"></h3>
+<p class="video-gallery-description" id="videoGalleryDescription"></p>
+</div>
+<span class="video-count" id="videoCount"></span>
+</div>
+<div class="video-grid" id="videoGrid"></div>
+</div>
+</div>
+</section>
 <section id="systems">
 <div class="wrap">
 <div class="section-head">
@@ -570,6 +675,22 @@
 <footer>
     © Kim Sejin · Unity Client Developer Portfolio
   </footer>
+<div aria-hidden="true" class="video-modal" id="videoModal">
+<div aria-labelledby="videoPlayerTitle" aria-modal="true" class="video-dialog" role="dialog">
+<button aria-label="영상 닫기" class="video-close" id="videoClose" type="button">×</button>
+<div class="video-stage">
+<button aria-label="이전 영상" class="video-nav" id="videoPrev" type="button">‹</button>
+<div class="video-player-shell">
+<video controls id="videoPlayer" playsinline preload="metadata"></video>
+<div class="video-player-meta">
+<strong class="video-player-title" id="videoPlayerTitle"></strong>
+<span class="video-player-counter" id="videoPlayerCounter"></span>
+</div>
+</div>
+<button aria-label="다음 영상" class="video-nav" id="videoNext" type="button">›</button>
+</div>
+</div>
+</div>
 <div aria-hidden="true" class="modal" id="codeModal">
 <div aria-modal="true" class="modal-box" role="dialog">
 <div class="modal-top">
@@ -1107,6 +1228,180 @@ Haptic.Play(HapticType.Success);</code></pre></div><div class="code-pane" id="co
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
 <script>
+    const videoCollections = [
+      {
+        title: '뱀서라이크:오리 - 아이템 영상',
+        description: '기획, 리소스, 개발 모두 혼자 진행한 프로젝트입니다.',
+        videos: [
+          { title: '아이템 01: 삽', src: 'Assets/Videos/VampireDuck/Items/01-shovel.mp4', poster: 'Assets/Thumbnails/VampireDuck/Items/01-shovel.jpg' },
+          { title: '아이템 02: 팝건', src: 'Assets/Videos/VampireDuck/Items/02-popgun.mp4', poster: 'Assets/Thumbnails/VampireDuck/Items/02-popgun.jpg' },
+          { title: '아이템 03: 공', src: 'Assets/Videos/VampireDuck/Items/03-ball.mp4', poster: 'Assets/Thumbnails/VampireDuck/Items/03-ball.jpg' },
+          { title: '아이템 04: 활', src: 'Assets/Videos/VampireDuck/Items/04-bow.mp4', poster: 'Assets/Thumbnails/VampireDuck/Items/04-bow.jpg' },
+          { title: '아이템 05: 막대기', src: 'Assets/Videos/VampireDuck/Items/05-stick.mp4', poster: 'Assets/Thumbnails/VampireDuck/Items/05-stick.jpg' },
+          { title: '아이템 06: 독병', src: 'Assets/Videos/VampireDuck/Items/06-poison-bottle.mp4', poster: 'Assets/Thumbnails/VampireDuck/Items/06-poison-bottle.jpg' },
+          { title: '아이템 07: 칼', src: 'Assets/Videos/VampireDuck/Items/07-knife.mp4', poster: 'Assets/Thumbnails/VampireDuck/Items/07-knife.jpg' },
+          { title: '아이템 08: 화염 지팡이', src: 'Assets/Videos/VampireDuck/Items/08-fire-wand.mp4', poster: 'Assets/Thumbnails/VampireDuck/Items/08-fire-wand.jpg' },
+          { title: '아이템 09: 물총', src: 'Assets/Videos/VampireDuck/Items/09-water-gun.mp4', poster: 'Assets/Thumbnails/VampireDuck/Items/09-water-gun.jpg' },
+          { title: '아이템 10: 수박', src: 'Assets/Videos/VampireDuck/Items/10-watermelon.mp4', poster: 'Assets/Thumbnails/VampireDuck/Items/10-watermelon.jpg' },
+          { title: '아이템 11: 얼음 지팡이', src: 'Assets/Videos/VampireDuck/Items/11-ice-wand.mp4', poster: 'Assets/Thumbnails/VampireDuck/Items/11-ice-wand.jpg' },
+          { title: '아이템 12: 비둘기 발사기', src: 'Assets/Videos/VampireDuck/Items/12-pigeon-launcher.mp4', poster: 'Assets/Thumbnails/VampireDuck/Items/12-pigeon-launcher.jpg' },
+          { title: '아이템 13: 바나나 껍질', src: 'Assets/Videos/VampireDuck/Items/13-banana-peel.mp4', poster: 'Assets/Thumbnails/VampireDuck/Items/13-banana-peel.jpg' },
+          { title: '아이템 14: 축구공', src: 'Assets/Videos/VampireDuck/Items/14-soccer-ball.mp4', poster: 'Assets/Thumbnails/VampireDuck/Items/14-soccer-ball.jpg' }
+        ]
+      },
+      {
+        title: '뱀서라이크:오리 - UI 연출',
+        description: '기획, 리소스, 개발 모두 혼자 진행한 프로젝트입니다.',
+        videos: [
+          { title: 'UI: LevelUp', src: 'Assets/Videos/VampireDuck/UI/level-up-item-select.mp4', poster: 'Assets/Thumbnails/VampireDuck/UI/level-up-item-select.jpg' },
+          { title: 'UI: GameEnd', src: 'Assets/Videos/VampireDuck/UI/game-end.mp4', poster: 'Assets/Thumbnails/VampireDuck/UI/game-end.jpg' },
+          { title: 'UI: SceneTransition', src: 'Assets/Videos/VampireDuck/UI/scene-transition.mp4', poster: 'Assets/Thumbnails/VampireDuck/UI/scene-transition.jpg' }
+        ]
+      }
+    ];
+
+    const videoCategoryList = document.getElementById('videoCategoryList');
+    const videoGalleryTitle = document.getElementById('videoGalleryTitle');
+    const videoGalleryDescription = document.getElementById('videoGalleryDescription');
+    const videoCount = document.getElementById('videoCount');
+    const videoGrid = document.getElementById('videoGrid');
+    const videoModal = document.getElementById('videoModal');
+    const videoPlayer = document.getElementById('videoPlayer');
+    const videoPlayerTitle = document.getElementById('videoPlayerTitle');
+    const videoPlayerCounter = document.getElementById('videoPlayerCounter');
+    const videoClose = document.getElementById('videoClose');
+    const videoPrev = document.getElementById('videoPrev');
+    const videoNext = document.getElementById('videoNext');
+    let activeVideoCollection = 0;
+    let activeVideoIndex = 0;
+    let videoTrigger = null;
+
+    function renderVideoCategories() {
+      videoCategoryList.innerHTML = '';
+      videoCollections.forEach((collection, index) => {
+        const button = document.createElement('button');
+        const isActive = index === activeVideoCollection;
+        button.className = 'video-category';
+        button.type = 'button';
+        button.setAttribute('role', 'tab');
+        button.textContent = collection.title;
+        button.setAttribute('aria-selected', String(isActive));
+        button.tabIndex = isActive ? 0 : -1;
+        button.addEventListener('click', () => {
+          activeVideoCollection = index;
+          activeVideoIndex = 0;
+          renderVideoCategories();
+          renderVideoGallery();
+        });
+        videoCategoryList.appendChild(button);
+      });
+    }
+
+    function renderVideoGallery() {
+      const collection = videoCollections[activeVideoCollection];
+      videoGalleryTitle.textContent = collection.title;
+      videoGalleryDescription.textContent = collection.description;
+      videoCount.textContent = `${collection.videos.length} ${collection.videos.length === 1 ? 'Video' : 'Videos'}`;
+      videoGrid.innerHTML = '';
+
+      collection.videos.forEach((video, index) => {
+        const button = document.createElement('button');
+        const thumb = document.createElement('span');
+        const image = document.createElement('img');
+        const playMark = document.createElement('span');
+        const title = document.createElement('span');
+
+        button.className = 'video-card';
+        button.type = 'button';
+        button.setAttribute('aria-label', `${video.title} 영상 재생`);
+        thumb.className = 'video-thumb';
+        image.src = video.poster;
+        image.alt = `${video.title} 영상 썸네일`;
+        image.loading = 'lazy';
+        image.width = 360;
+        image.height = 640;
+        playMark.className = 'video-play-mark';
+        playMark.setAttribute('aria-hidden', 'true');
+        playMark.textContent = '▶';
+        title.className = 'video-card-title';
+        title.textContent = video.title;
+
+        thumb.append(image, playMark);
+        button.append(thumb, title);
+        button.addEventListener('click', () => openVideo(index, button));
+        videoGrid.appendChild(button);
+      });
+    }
+
+    function updateVideoPlayer() {
+      const collection = videoCollections[activeVideoCollection];
+      const video = collection.videos[activeVideoIndex];
+      videoPlayer.pause();
+      videoPlayer.src = video.src;
+      videoPlayer.poster = video.poster;
+      videoPlayer.load();
+      videoPlayerTitle.textContent = video.title;
+      videoPlayerCounter.textContent = `${activeVideoIndex + 1} / ${collection.videos.length}`;
+      const hasMultipleVideos = collection.videos.length > 1;
+      videoPrev.disabled = !hasMultipleVideos;
+      videoNext.disabled = !hasMultipleVideos;
+    }
+
+    function openVideo(index, trigger) {
+      activeVideoIndex = index;
+      videoTrigger = trigger;
+      updateVideoPlayer();
+      videoModal.classList.add('open');
+      videoModal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('video-modal-open');
+      videoClose.focus();
+    }
+
+    function navigateVideo(direction) {
+      const videos = videoCollections[activeVideoCollection].videos;
+      if (videos.length < 2) return;
+      activeVideoIndex = (activeVideoIndex + direction + videos.length) % videos.length;
+      updateVideoPlayer();
+    }
+
+    function closeVideo() {
+      if (!videoModal.classList.contains('open')) return;
+      videoPlayer.pause();
+      videoPlayer.removeAttribute('src');
+      videoPlayer.removeAttribute('poster');
+      videoPlayer.load();
+      videoModal.classList.remove('open');
+      videoModal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('video-modal-open');
+      if (videoTrigger) videoTrigger.focus();
+    }
+
+    videoClose.addEventListener('click', closeVideo);
+    videoPrev.addEventListener('click', () => navigateVideo(-1));
+    videoNext.addEventListener('click', () => navigateVideo(1));
+    videoModal.addEventListener('click', (event) => {
+      if (event.target === videoModal) closeVideo();
+    });
+    videoModal.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') navigateVideo(-1);
+      if (event.key === 'ArrowRight') navigateVideo(1);
+      if (event.key !== 'Tab') return;
+
+      const focusable = [videoClose, videoPrev, videoPlayer, videoNext].filter((element) => !element.disabled);
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+
+    renderVideoCategories();
+    renderVideoGallery();
+
     const modal = document.getElementById('codeModal');
     const modalBody = document.getElementById('modalBody');
     const modalTitle = document.getElementById('modalTitle');
@@ -1148,7 +1443,11 @@ Haptic.Play(HapticType.Success);</code></pre></div><div class="code-pane" id="co
     });
     closeBtn.addEventListener('click', closeCode);
     modal.addEventListener('click', (e) => { if (e.target === modal) closeCode(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCode(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      if (videoModal.classList.contains('open')) closeVideo();
+      else closeCode();
+    });
   </script>
 </body>
 </html>
