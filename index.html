@@ -1230,6 +1230,21 @@ Haptic.Play(HapticType.Success);</code></pre></div><div class="code-pane" id="co
 <script>
     const videoCollections = [
       {
+        title: '빠지냥',
+        videos: [
+          { title: '빠지냥: 가이드', src: 'Assets/Videos/DropTheCat/guide.mp4', poster: 'Assets/Thumbnails/DropTheCat/guide.jpg' },
+          { title: '빠지냥: 박스 기믹', src: 'Assets/Videos/DropTheCat/box-gimmick.mp4', poster: 'Assets/Thumbnails/DropTheCat/box-gimmick.jpg' }
+        ]
+      },
+      {
+        title: '모먹냥',
+        videos: [
+          { title: '모먹냥: 레일 루프', src: 'Assets/Videos/SandCatBlast/rail-loop.mp4', poster: 'Assets/Thumbnails/SandCatBlast/rail-loop.jpg' },
+          { title: '모먹냥: 아이템 1', src: 'Assets/Videos/SandCatBlast/magnet-item.mp4', poster: 'Assets/Thumbnails/SandCatBlast/magnet-item.jpg' },
+          { title: '모먹냥: 아이템 2', src: 'Assets/Videos/SandCatBlast/shuffle-item.mp4', poster: 'Assets/Thumbnails/SandCatBlast/shuffle-item.jpg' }
+        ]
+      },
+      {
         title: '뱀서라이크:오리 - 아이템 영상',
         description: '기획, 리소스, 개발 모두 혼자 진행한 프로젝트입니다.',
         videos: [
@@ -1300,7 +1315,8 @@ Haptic.Play(HapticType.Success);</code></pre></div><div class="code-pane" id="co
     function renderVideoGallery() {
       const collection = videoCollections[activeVideoCollection];
       videoGalleryTitle.textContent = collection.title;
-      videoGalleryDescription.textContent = collection.description;
+      videoGalleryDescription.textContent = collection.description || '';
+      videoGalleryDescription.hidden = !collection.description;
       videoCount.textContent = `${collection.videos.length} ${collection.videos.length === 1 ? 'Video' : 'Videos'}`;
       videoGrid.innerHTML = '';
 
