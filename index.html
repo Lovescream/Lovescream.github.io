@@ -220,6 +220,38 @@
     .mini-links { display:flex; gap: 8px; margin-top: 14px; flex-wrap:wrap; }
     .mini-links a { font-size: 12px; color: var(--accent); font-family:var(--mono); display:inline-flex; align-items:center; gap:5px; }
 
+    .archive-track {
+      display:flex; gap:16px; overflow-x:auto; padding:2px 2px 16px;
+      scroll-snap-type:x proximity; scrollbar-width:thin;
+      scrollbar-color:rgba(169,139,255,.58) rgba(255,255,255,.06);
+    }
+    .archive-track::-webkit-scrollbar { height:8px; }
+    .archive-track::-webkit-scrollbar-track { border-radius:999px; background:rgba(255,255,255,.06); }
+    .archive-track::-webkit-scrollbar-thumb { border-radius:999px; background:rgba(169,139,255,.58); }
+    .archive-card {
+      flex:0 0 560px; min-width:0; min-height:390px; display:grid;
+      grid-template-columns:190px minmax(0, 1fr); gap:20px; padding:18px;
+      border:1px solid var(--line); border-radius:24px;
+      background:linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.045));
+      scroll-snap-align:start;
+    }
+    .archive-shot {
+      width:100%; height:100%; min-height:350px; display:block; object-fit:cover; object-position:top;
+      border:1px solid var(--line); border-radius:17px; background:#090c18;
+    }
+    .archive-body { min-width:0; display:flex; flex-direction:column; }
+    .archive-kicker { color:var(--accent2); font-family:var(--mono); font-size:11px; font-weight:900; letter-spacing:.06em; text-transform:uppercase; }
+    .archive-body h3 { margin:5px 0 2px; color:var(--ink); font-size:22px; line-height:1.25; letter-spacing:-.025em; }
+    .archive-period { color:var(--muted); font-family:var(--mono); font-size:11px; }
+    .archive-summary { margin-top:12px; color:var(--text); font-size:13px; line-height:1.55; }
+    .archive-facts { display:grid; gap:7px; margin:13px 0 0; }
+    .archive-facts div { padding:9px 10px; border:1px solid var(--line); border-radius:12px; background:rgba(13,16,32,.34); color:var(--text); font-size:12px; line-height:1.45; }
+    .archive-facts b { display:block; margin-bottom:2px; color:var(--accent); font-family:var(--mono); font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; }
+    .archive-links { display:flex; flex-wrap:wrap; gap:8px; margin-top:auto; padding-top:14px; }
+    .archive-links a { padding:7px 10px; border:1px solid var(--line); border-radius:999px; color:var(--ink); font-family:var(--mono); font-size:11px; }
+    .archive-links a:hover { color:var(--accent); border-color:rgba(139,233,214,.5); }
+    .archive-note { margin-top:14px; color:var(--muted); font-size:12px; }
+
     .video-category-list {
       display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;
       margin-bottom: 24px;
@@ -369,6 +401,8 @@
       .video-close { right:2px; top:-10px; }
       .video-player-meta { display:block; padding:12px 14px; }
       .video-player-counter { display:block; margin-top:4px; }
+      .archive-card { flex-basis:min(86vw, 390px); grid-template-columns:1fr; min-height:0; }
+      .archive-shot { height:310px; min-height:0; }
     }
   </style>
 </head>
@@ -543,6 +577,97 @@
 <article class="mini-project"><div class="mini-head"><img alt="Duck Loop 아이콘" class="mini-icon" src="Assets/AppIcons/DuckLoop.png"/><h3>Duck Loop</h3></div><div class="download-badge">400+</div><div class="mini-meta"><span><b>규모</b>기획 및 메인 개발 1 · 아트 1</span><span><b>역할</b>기획 및 메인 개발</span></div><div class="mini-links"><a href="https://apps.apple.com/kr/app/duck-loop/id6779206823" rel="noreferrer" target="_blank"><img alt="" class="store-icon white-icon" src="Assets/Icons/AppStore.png"/>App</a></div></article>
 <article class="mini-project"><div class="mini-head"><h3>기타 20개 이상</h3></div><div class="mini-meta"><span><b>범위</b>코어 플레이 · MVP · UI/UX · SDK 연동 · 저장 구조</span></div></article>
 </div>
+</div>
+</section>
+<section id="archive">
+<div class="wrap">
+<div class="section-head">
+<div>
+<div class="eyebrow">Earlier Releases</div>
+<h2 class="section-title">이전 출시작</h2>
+</div>
+<p class="section-lead">초기 팀 프로젝트와 1인 개발을 통해 기획부터 구현, SDK 연동, 출시까지 경험한 게임들입니다.</p>
+</div>
+<div aria-label="이전 출시작 목록" class="archive-track">
+<article class="archive-card">
+<img alt="SSUM 숫자 퍼즐 플레이 화면" class="archive-shot" height="1279" loading="lazy" src="Assets/Screenshots/Archive/SSUM/main.png" width="1024"/>
+<div class="archive-body">
+<span class="archive-kicker">Solo Development · Number Puzzle</span>
+<h3>SSUM</h3>
+<span class="archive-period">2023.09</span>
+<p class="archive-summary">가로·세로 숫자 합을 맞추는 단일 규칙을 보드 크기와 편의 아이템으로 확장하고, 손그림 느낌의 화면을 구성했습니다.</p>
+<div class="archive-facts"><div><b>Result</b>누적 다운로드 1,000+</div><div><b>Core</b>합계 판정 · 난이도 구성 · Sprite 무작위 변형 · GPGS</div></div>
+<div class="archive-links"><a href="https://youtube.com/shorts/oEWQe5n7i2Y?si=kbLEwrlefBoEULjc" rel="noreferrer" target="_blank">YouTube 영상</a><a href="https://app.notion.com/p/blossom2/SSUM-add5a708e56440eab83696ec32ecaafd" rel="noreferrer" target="_blank">상세 기록</a></div>
+</div>
+</article>
+<article class="archive-card">
+<img alt="Pixel Defense 타워 디펜스 플레이 화면" class="archive-shot" height="1440" loading="lazy" src="Assets/Screenshots/Archive/PixelDefense/main.png" width="724"/>
+<div class="archive-body">
+<span class="archive-kicker">Solo Development · Tower Defense</span>
+<h3>픽셀 디펜스 · Pixel Defense</h3>
+<span class="archive-period">2023.07 — 2023.09</span>
+<p class="archive-summary">픽셀 타워를 배치·합성해 웨이브를 막는 게임으로, 데이터와 리소스 로딩까지 출시 가능한 구조로 구성했습니다.</p>
+<div class="archive-facts"><div><b>Result</b>누적 다운로드 1,000+</div><div><b>Core</b>Addressables 비동기 로딩 · CSV / JSON · IAP · GPGS</div></div>
+<div class="archive-links"><a href="https://youtu.be/ZA-u6NUCrlM?si=CqVrIJXwHpuyIZ7q" rel="noreferrer" target="_blank">YouTube 영상</a><a href="https://app.notion.com/p/blossom2/8a947df8f1014bee8cfe255d15999f21" rel="noreferrer" target="_blank">상세 기록</a></div>
+</div>
+</article>
+<article class="archive-card">
+<img alt="햄쥐마리우스 육각형 보드 퍼즐 플레이 화면" class="archive-shot" height="512" loading="lazy" src="Assets/Screenshots/Archive/HamsterMarius/main.png" width="275"/>
+<div class="archive-body">
+<span class="archive-kicker">Solo Development · Hex Puzzle</span>
+<h3>햄쥐마리우스</h3>
+<span class="archive-period">2020.07 — 2020.08</span>
+<p class="archive-summary">육각형 보드에서 두 칸씩 이동하는 규칙과 제한 횟수 안에 목표를 모으는 퍼즐 구조를 설계했습니다.</p>
+<div class="archive-facts"><div><b>Content</b>8개 챕터 · 총 64개 스테이지 · 튜토리얼</div><div><b>Core</b>육각형 경로 · 클리어 판정 · 4개 아이템</div></div>
+<div class="archive-links"><a href="https://app.notion.com/p/blossom2/20d84edcd3b24a47a2936f62adcda180" rel="noreferrer" target="_blank">상세 기록</a></div>
+</div>
+</article>
+<article class="archive-card">
+<img alt="To8 숫자 결합 퍼즐 플레이 화면" class="archive-shot" height="1440" loading="lazy" src="Assets/Screenshots/Archive/To8/main.png" width="720"/>
+<div class="archive-body">
+<span class="archive-kicker">Solo Development · Puzzle</span>
+<h3>To8</h3>
+<span class="archive-period">2019.10 — 2019.11 · 2020.04 개선</span>
+<p class="archive-summary">그리드에 숫자를 놓고 인접한 같은 숫자를 연쇄 결합하는 퍼즐 로직과 세 가지 보조 아이템을 구현했습니다.</p>
+<div class="archive-facts"><div><b>Core</b>그리드 결합 로직 · 아이템 · 최고 기록</div><div><b>Release</b>GPGS · 5개 언어 현지화 · Android 출시</div></div>
+<div class="archive-links"><a href="https://app.notion.com/p/blossom2/To8-2ac98f14e7da4ebfab0348953e2cfb1e" rel="noreferrer" target="_blank">상세 기록</a></div>
+</div>
+</article>
+<article class="archive-card">
+<img alt="Ice Climbing 빙벽 등반 플레이 화면" class="archive-shot" height="1280" loading="lazy" src="Assets/Screenshots/Archive/IceClimbing/main.png" width="720"/>
+<div class="archive-body">
+<span class="archive-kicker">2-Person Team · Rhythm</span>
+<h3>Ice Climbing</h3>
+<span class="archive-period">2019.12</span>
+<p class="archive-summary">노트와 입력 시점의 차이로 판정을 계산하고 콤보·스태미나·피버를 연결한 리듬형 등반 게임입니다.</p>
+<div class="archive-facts"><div><b>Result</b>누적 설치 1,006</div><div><b>Core</b>타이밍 판정 · 6개 벽 재배치 무한 진행 · GPGS</div></div>
+<div class="archive-links"><a href="https://app.notion.com/p/blossom2/Ice-Climbing-69a8e87ebc9c440e809a711aa7d60a53" rel="noreferrer" target="_blank">상세 기록</a></div>
+</div>
+</article>
+<article class="archive-card">
+<img alt="우울한 토끼 감성 비행 게임 플레이 화면" class="archive-shot" height="1280" loading="lazy" src="Assets/Screenshots/Archive/GloomyRabbit/main.png" width="720"/>
+<div class="archive-body">
+<span class="archive-kicker">2-Person Team · Casual</span>
+<h3>우울한 토끼</h3>
+<span class="archive-period">2019.11 — 2019.12</span>
+<p class="archive-summary">좌우 터치 물리 이동, 규칙 기반 무한 플랫폼, 감지 상태에 따른 적 행동과 이벤트·아이템 시스템을 구현했습니다.</p>
+<div class="archive-facts"><div><b>Result</b>누적 설치 12,659 · 최종 확인 평점 4.4</div><div><b>Core</b>물리 이동 · 무한 생성 · 상태 기반 적 · JSON 저장</div></div>
+<div class="archive-links"><a href="https://app.notion.com/p/blossom2/f63900812e0147a1979c49664c113e47" rel="noreferrer" target="_blank">상세 기록</a></div>
+</div>
+</article>
+<article class="archive-card">
+<img alt="냠냥 고양이 타이쿤 플레이 화면" class="archive-shot" height="1440" loading="lazy" src="Assets/Screenshots/Archive/NyamNyang/main.png" width="810"/>
+<div class="archive-body">
+<span class="archive-kicker">Team Project · Android / iOS</span>
+<h3>냠냥 NyamNyang</h3>
+<span class="archive-period">2019.07 — 2019.09</span>
+<p class="archive-summary">기존 프로토타입을 분석·리팩토링하고 메인 게임, 미니게임, 컬렉션, UI와 튜토리얼을 전반적으로 구현했습니다.</p>
+<div class="archive-facts"><div><b>Role</b>코드 리팩토링 · 전반적인 게임 개발</div><div><b>Release</b>AdMob · Unity IAP · Android / iOS 출시</div></div>
+<div class="archive-links"><a href="https://app.notion.com/p/blossom2/NyamNyang-8a691b8ffdd04171995e1dde7c874d29" rel="noreferrer" target="_blank">상세 기록</a></div>
+</div>
+</article>
+</div>
+<p class="archive-note">우울한 토끼와 Ice Climbing의 설치 수는 2026년 7월 Google Play Console 기록 기준이며, 평점은 최종 확인값입니다.</p>
 </div>
 </section>
 <section id="work-videos">
