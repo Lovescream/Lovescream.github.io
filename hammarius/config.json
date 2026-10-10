@@ -8,7 +8,7 @@
   "BannerEnabled": true,
   "InterstitialsEnabled": true,
   "ClearCoinMultiplier": 1.0,
-  "DevModeAllowed": false,
+  "DevModeAllowed": true,
   "WeekendEventEnabled": true,
   "WeekendCoinMultiplier": 2.0,
   "Notices": [],
