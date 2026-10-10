@@ -1,0 +1,27 @@
+{
+  "ConfigUrl": "https://lovescream.github.io/hammarius/config.json",
+  "MinVersion": "",
+  "StoreUrl": "https://play.google.com/store/apps/details?id=com.blossom.hammarius",
+  "SupportEmail": "",
+  "PrivacyUrl": "",
+  "AdsEnabled": true,
+  "BannerEnabled": true,
+  "InterstitialsEnabled": true,
+  "ClearCoinMultiplier": 1.0,
+  "DevModeAllowed": false,
+  "WeekendEventEnabled": true,
+  "WeekendCoinMultiplier": 2.0,
+  "Notices": [],
+  "Coupons": [
+    {
+      "Key": "launch_2026",
+      "Hash": "81d2cd69a194432882a0afa70773ca63",
+      "Expires": "2026-12-31",
+      "Coins": 300,
+      "Boosters": {
+        "Hint": 2,
+        "Undo": 2
+      }
+    }
+  ]
+}
