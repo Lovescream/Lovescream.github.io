@@ -11,6 +11,7 @@
   "DevModeAllowed": true,
   "WeekendEventEnabled": true,
   "WeekendCoinMultiplier": 2.0,
+  "AnalyticsExcludedModels": ["IN2025"],
   "Notices": [],
   "Coupons": [
     {
