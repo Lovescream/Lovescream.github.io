@@ -11,7 +11,7 @@
   "DevModeAllowed": false,
   "WeekendEventEnabled": true,
   "WeekendCoinMultiplier": 2.0,
-  "AnalyticsExcludedModels": ["IN2025"],
+  "AnalyticsExcludedModels": ["IN2025", "sdk_gphone"],
   "Notices": [],
   "Coupons": [
     {
